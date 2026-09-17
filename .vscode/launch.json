@@ -1,0 +1,51 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "codelldb: Launch ${workspaceFolder}/prog",
+      "type": "codelldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/prog",
+      "cwd": "${workspaceFolder}",
+      "stopOnEntry": false
+    },
+    {
+      "name": "codelldb: Launch ${fileDirname}/prog",
+      "type": "codelldb",
+      "request": "launch",
+      "program": "${fileDirname}/prog",
+      "cwd": "${fileDirname}",
+      "stopOnEntry": false
+    },
+    {
+      "name": "codelldb: Launch custom (input)",
+      "type": "codelldb",
+      "request": "launch",
+      "program": "${input:exePath}",
+      "cwd": "${workspaceFolder}",
+      "stopOnEntry": false
+    },
+    {
+      "name": "codelldb: Launch ${fileDirname}/${input:exeName}",
+      "type": "codelldb",
+      "request": "launch",
+      "program": "${fileDirname}/${input:exeName}",
+      "cwd": "${fileDirname}",
+      "stopOnEntry": false
+    }
+  ],
+  "inputs": [
+    {
+      "id": "exePath",
+      "type": "promptString",
+      "description": "Path to executable (e.g. ./prog or ./add3_test)",
+      "default": "${workspaceFolder}/prog"
+    },
+    {
+      "id": "exeName",
+      "type": "promptString",
+      "description": "Binary name in the current file's directory",
+      "default": "prog"
+    }
+  ]
+}

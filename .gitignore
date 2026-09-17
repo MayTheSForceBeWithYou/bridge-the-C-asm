@@ -1,0 +1,52 @@
+# Build artifacts. Everything here is produced by `make` targets in
+# common.mk / per-exercise Makefiles and removed by `make clean`.
+# Hand-written Track B assembly sources (*.s) stay tracked, so *.s is NOT
+# ignored wholesale — only the specific names gcc -S writes.
+
+# Objects, intermediates, listings
+*.o
+*.i
+*.lst
+*.lst.intel
+*.out
+*.bin
+a.out
+core
+core.*
+
+# gcc -S / gcc -E output for Track A source names
+hello.s
+prog.s
+prog.O0.s
+prog.O2.s
+
+# Linked exercise binaries (NAME in each exercise Makefile)
+hello
+prog
+*_test
+exit_n
+write_n
+cat_task
+mmap_demo
+argv0
+wc_nl
+
+# Per-exercise variant builds and measurement output (CLEAN_EXTRA)
+prog.O0
+prog.O2
+prog.stripped
+prog.nopie
+prog.hidden
+hello.dyn
+hello.static
+*.nm
+*.size
+o0.txt
+o2.txt
+o3.txt
+
+# Debugger / editor scratch
+.gdb_history
+peda-session-*.txt
+*.core
+vgcore.*
