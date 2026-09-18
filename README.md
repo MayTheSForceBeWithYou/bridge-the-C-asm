@@ -37,11 +37,12 @@ c-and-asm-grind/
   README.md REFS.md NVIM_DAP.md Makefile common.mk .gitignore
   .vscode/launch.json
   PLAN_PROMPT.md EXTENDED_PROMPT.md
-  01-hello-pipeline/ ... 71-dap-asm-step/
+  01-hello-pipeline/ ... 75-asm-pie-riprel/
 ```
 
 - **Track A (01–20, 29–31):** write C → inspect `.i` / `.s` / `.o` / disassembly.
-- **Track B (21–28):** hand-write GNU `as` AT&T assembly; C harness or freestanding.
+- **Track B (21–28, 72–75):** hand-write GNU `as` AT&T assembly; C harness,
+  freestanding, or a whole `main` of your own linked against libc.
 - **Track C (32–39, 69–71):** live debugging — nvim-dap breakpoints/step/memory
   and gdb CLI (stepi, watchpoints, TUI, strip, addr2line). Dir names keep the
   `32-gdb-*` prefix for stability; content teaches both tools.
@@ -125,6 +126,10 @@ c-and-asm-grind/
 | 69 | `69-dap-breakpoints-step` | C |
 | 70 | `70-dap-memory-view` | C |
 | 71 | `71-dap-asm-step` | C |
+| 72 | `72-asm-main-libc` | B |
+| 73 | `73-asm-cfi-backtrace` | B |
+| 74 | `74-asm-sections-directives` | B |
+| 75 | `75-asm-pie-riprel` | B |
 
 ## How to build
 

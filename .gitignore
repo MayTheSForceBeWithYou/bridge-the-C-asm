@@ -30,6 +30,10 @@ cat_task
 mmap_demo
 argv0
 wc_nl
+hello_asm
+unwind_demo
+sections_asm
+riprel
 
 # Per-exercise variant builds and measurement output (CLEAN_EXTRA)
 prog.O0
@@ -39,6 +43,8 @@ prog.nopie
 prog.hidden
 hello.dyn
 hello.static
+riprel.abs
+riprel.nopie
 *.nm
 *.size
 o0.txt
