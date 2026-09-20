@@ -40,6 +40,8 @@ bridge-the-C-asm/
   .vscode/launch.json
   PLAN_PROMPT.md EXTENDED_PROMPT.md
   01-hello-pipeline/ ... 75-asm-pie-riprel/
+  00-first-gdb-session/ 76-assert-runner/ ... 83-cmake-three-binaries/
+  test/check.h
 ```
 
 - **Track A (01–20, 29–31):** write C → inspect `.i` / `.s` / `.o` / disassembly.
@@ -52,11 +54,13 @@ bridge-the-C-asm/
 - **Track E (47–54):** ELF, PLT, PIE/ASLR, strip, explicit `ld`, optional linker script.
 - **Track F (55–62):** `rdtscp` timing, opts, autovec, cache, false sharing, capstone.
 - **Track G (63–68):** IEEE bits, memcpy vs union, tags, bitfields, endian, Q16.16.
+- **Track H (76–83):** assert runner, link/runtime seams, fakes, injected clock/IO/syscalls, CMake target graph. `00` opens gdb before Track C.
 
 ## Exercise table
 
 | # | Directory | Track |
 |---|-----------|-------|
+| 00 | `00-first-gdb-session` | C |
 | 01 | `01-hello-pipeline` | A |
 | 02 | `02-prologue-epilogue` | A |
 | 03 | `03-locals-stack` | A |
@@ -132,6 +136,14 @@ bridge-the-C-asm/
 | 73 | `73-asm-cfi-backtrace` | B |
 | 74 | `74-asm-sections-directives` | B |
 | 75 | `75-asm-pie-riprel` | B |
+| 76 | `76-assert-runner` | H |
+| 77 | `77-seam-by-linking` | H |
+| 78 | `78-ops-struct` | H |
+| 79 | `79-fake-renderer` | H |
+| 80 | `80-inject-the-clock` | H |
+| 81 | `81-inject-file-io` | H |
+| 82 | `82-fake-the-syscall` | H |
+| 83 | `83-cmake-three-binaries` | H |
 
 ## How to build
 
