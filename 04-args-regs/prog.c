@@ -37,10 +37,10 @@ long f7(long a, long b, long c, long d, long e, long f, long g)
 int main(void)
 {
     /* Sums: f1(1)=1, f2(1,2)=3, f6(1..6)=21, f7(1..7)=28 */
-    CHECK_EQ((int)(f1(1)), (int)(1));
-    CHECK_EQ((int)(f2(1, 2)), (int)(3));
-    CHECK_EQ((int)(f6(1, 2, 3, 4, 5, 6)), (int)(21));
-    CHECK_EQ((int)(f7(1, 2, 3, 4, 5, 6, 7)), (int)(28));
+    CHECK_EQ(f1(1), 1);
+    CHECK_EQ(f2(1, 2), 3);
+    CHECK_EQ(f6(1, 2, 3, 4, 5, 6), 21);
+    CHECK_EQ(f7(1, 2, 3, 4, 5, 6, 7), 28);
     if (test_report() != 0)
         return 1;
     puts("ok");

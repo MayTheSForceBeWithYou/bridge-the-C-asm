@@ -20,14 +20,17 @@ static int tests_failed = 0;
         }                                                               \
     } while (0)
 
+/* Widened to long long on purpose: several exercises are *about* width
+   (long arguments in 04, long returns in 05, size_t byte counts in 82).
+   Comparing those as int would truncate the very thing under test. */
 #define CHECK_EQ(actual, expected)                                      \
     do {                                                                \
         tests_run++;                                                    \
-        int a_ = (actual);                                              \
-        int e_ = (expected);                                            \
+        long long a_ = (long long)(actual);                             \
+        long long e_ = (long long)(expected);                           \
         if (a_ != e_) {                                                 \
             tests_failed++;                                             \
-            printf("  FAIL %s:%d: %s == %d, expected %d\n",             \
+            printf("  FAIL %s:%d: %s == %lld, expected %lld\n",         \
                    __FILE__, __LINE__, #actual, a_, e_);                \
         }                                                               \
     } while (0)

@@ -31,7 +31,7 @@ int main(void)
 {
     /* Contract: ret_int->42, ret_long->100, Pair{3,4} */
     CHECK_EQ(ret_int(), 42);
-    CHECK_EQ((int)(ret_long()), (int)(100));
+    CHECK_EQ(ret_long(), 100);
     struct Pair p = ret_pair();
     CHECK_EQ(p.x, 3);
     CHECK_EQ(p.y, 4);

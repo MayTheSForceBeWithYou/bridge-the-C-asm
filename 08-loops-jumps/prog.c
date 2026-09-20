@@ -24,9 +24,9 @@ long sum_do(long n)
 
 int main(void)
 {
-    CHECK_EQ((int)(sum_for(10)), (int)(55));
-    CHECK_EQ((int)(sum_while(10)), (int)(55));
-    CHECK_EQ((int)(sum_do(10)), (int)(55));
+    CHECK_EQ(sum_for(10), 55);
+    CHECK_EQ(sum_while(10), 55);
+    CHECK_EQ(sum_do(10), 55);
     if (test_report() != 0)
         return 1;
     puts("ok");

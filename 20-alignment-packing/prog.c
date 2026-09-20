@@ -34,8 +34,8 @@ int main(void)
     struct Packed k = {1, 0x22222222u, 3};
     printf("sizeof N=%zu P=%zu\n", sizeof n, sizeof k);
     /* Contract: return a+b+c */
-    CHECK_EQ((int)read_normal(&n), (int)(1u + 0x22222222u + 3u));
-    CHECK_EQ((int)read_packed(&k), (int)(1u + 0x22222222u + 3u));
+    CHECK_EQ(read_normal(&n), 1u + 0x22222222u + 3u);
+    CHECK_EQ(read_packed(&k), 1u + 0x22222222u + 3u);
     if (test_report() != 0)
         return 1;
     puts("ok");

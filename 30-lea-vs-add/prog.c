@@ -26,8 +26,8 @@ int main(void)
 {
     int a[4] = {0, 1, 2, 3};
     CHECK_EQ(*idx(a, 2), 2);
-    CHECK_EQ((int)(scale(2, 3)), (int)(19));
-    CHECK_EQ((int)(weird(5)), (int)(16));
+    CHECK_EQ(scale(2, 3), 19);
+    CHECK_EQ(weird(5), 16);
     if (test_report() != 0)
         return 1;
     puts("ok");

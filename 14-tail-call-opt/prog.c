@@ -17,8 +17,8 @@ long fac_tail(long n, long acc)
 
 int main(void)
 {
-    CHECK_EQ((int)(fac_naive(5)), (int)(120));
-    CHECK_EQ((int)(fac_tail(5, 1)), (int)(120));
+    CHECK_EQ(fac_naive(5), 120);
+    CHECK_EQ(fac_tail(5, 1), 120);
     if (test_report() != 0)
         return 1;
     puts("ok");

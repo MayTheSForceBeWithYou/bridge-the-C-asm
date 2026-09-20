@@ -10,8 +10,8 @@ long fac(long n)
 
 int main(void)
 {
-    CHECK_EQ((int)(fac(5)), (int)(120));
-    CHECK_EQ((int)(fac(0)), (int)(1));
+    CHECK_EQ(fac(5), 120);
+    CHECK_EQ(fac(0), 1);
     if (test_report() != 0)
         return 1;
     puts("ok");

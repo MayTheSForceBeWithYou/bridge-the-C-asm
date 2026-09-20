@@ -19,8 +19,8 @@ long add2_asm(long a, long b)
 
 int main(void)
 {
-    CHECK_EQ((int)(add2_c(20, 22)), (int)(42));
-    CHECK_EQ((int)(add2_asm(20, 22)), (int)(42));
+    CHECK_EQ(add2_c(20, 22), 42);
+    CHECK_EQ(add2_asm(20, 22), 42);
     if (test_report() != 0)
         return 1;
     puts("ok");
