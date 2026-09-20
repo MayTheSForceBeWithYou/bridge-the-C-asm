@@ -1,25 +1,20 @@
-# 13 — Recursion and stack growth (Track A)
+# 13 — Recursion and stack growth (practice)
 
-## Goal
-Watch a recursive factorial/fib deepen the stack under `gdb`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement `long fac(long n);` recursively (no tail form required).
-2. `make` at `-O0`, then:
-   ```
-   gdb -q ./prog
-   (gdb) break fac
-   (gdb) run
-   (gdb) stepi
-   (gdb) info registers rsp rbp
-   ```
-   Step through a few recursive entries and watch `rsp`.
+## Build and inspect
 
-## Observe / answer
-- How much does `rsp` move per call?
-- What is saved on the stack each time (return address, `rbp`, locals)?
-- Confirm with `disassemble fac` inside gdb (`help disassemble`).
+1. Implement recursive `long fac(long n);` (non-tail form is fine).
+2. `make` at `-O0`, then use gdb:
+   `break fac`, `run`, `stepi`, `info registers rsp rbp`, and `disassemble fac`.
+3. Step through several recursive entries and record `%rsp` movement.
 
-## Refs
-`man 1 gdb`, gdb `help disassemble`, `help stepi`, `help info registers`,
-`man 1 objdump`
+## Done when
+
+- You stated how much `%rsp` moves per call (with evidence).
+- You listed what is saved each entry (return address, `%rbp`, locals).
+- You matched that list to `disassemble fac`.
+
+## Lookup
+
+`man 1 gdb`, gdb help for `disassemble` / `stepi` / `info registers`, `man 1 objdump`.

@@ -1,18 +1,20 @@
-# 20 — Packed vs aligned structs (Track A)
+# 20 — Packed vs aligned structs (practice)
 
-## Goal
-See packing change offsets — and whether asm shows clumsier accesses.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Define the same logical layout twice: normal and
-   `__attribute__((packed))`.
-2. Functions that read each field through a pointer.
-3. `make asm` and compare offsets / instruction sizes. Print `sizeof`.
+## Build and inspect
 
-## Observe / answer
-- How do load instructions differ (size, offset, split loads)?
-- Is a "cost" obvious in the asm, or only plausible from instruction count?
-- Confirm section/align notes with `objdump -h` on the `.o` if useful.
+1. Define the same logical layout twice: normal and `__attribute__((packed))`.
+2. Write functions that read each field through a pointer. Print `sizeof`.
+3. `make asm` and compare offsets / instruction shapes. Optionally
+   `objdump -h` on the `.o`.
 
-## Refs
-`man 1 gcc`, `man 1 objdump`, `info gcc`
+## Done when
+
+- You showed how load offsets differ between natural and packed.
+- You noted whether asm looks clumsier (splits, extra ops) or only denser.
+- `sizeof` evidence matches your offset story.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`, `info gcc`.

@@ -1,15 +1,17 @@
-# 64 — memcpy pun vs union (Track G)
+# 64 — memcpy pun vs union (practice)
 
-## Goal
-Same type pun via `memcpy` (standard-friendly) vs union; compare `-O2` asm.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement `bits_memcpy` and `bits_union`.
+## Implement
+
+1. `bits_memcpy` and `bits_union` for a float's bits.
 2. `make O=2 asm disasm` — do they collapse to the same load?
-3. Note the "union punning vs memcpy" distinction in your notes.
+3. Note union vs memcpy in your notes; print `ok`.
 
-## Success
-Both return identical bits; `-O2` asm is essentially equivalent. `ok`.
+## Done when
 
-## Refs
-`man 3 memcpy`, `man 1 gcc`, `man 1 objdump`
+- Both return identical bits; `-O2` asm essentially equivalent; `ok`.
+
+## Lookup
+
+`man 3 memcpy`, `man 1 gcc`, `man 1 objdump`.

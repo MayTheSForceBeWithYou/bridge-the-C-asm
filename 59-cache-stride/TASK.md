@@ -1,16 +1,17 @@
-# 59 — cache stride (Track F)
+# 59 — cache stride (practice)
 
-## Goal
-Sequential vs 64-byte-stride traversal over the same volume — L1 line size
-on this machine is **64** (`getconf LEVEL1_DCACHE_LINESIZE`).
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Allocate a large `char`/`int` buffer (tens of MiB).
-2. Time sequential touch vs stride-64 touch (same number of accesses).
-3. Explain using the 64-byte line fact (stated — no need to rediscover).
+## Measure
 
-## Success
-Two cycle counts; stride slower. Prints `ok`.
+1. Allocate a large buffer (tens of MiB).
+2. Time sequential touch vs stride-64 touch — **same number of accesses**.
+3. Explain with the 64-byte L1 line fact. Print `ok`.
 
-## Refs
-exercise 55, `man 1 gcc`
+## Done when
+
+- Two cycle counts; stride slower; `ok`.
+
+## Lookup
+
+exercise 55, `man 1 gcc`. L1D line = 64 B on this machine.

@@ -1,21 +1,19 @@
-# 46 — nostdlib arena wordcount stretch (Track D)
+# 46 — nostdlib arena wordcount (practice)
 
-## Goal
-Stretch: freestanding program that `open`/`read`s a file into an mmap/bump
-buffer, counts newlines, writes the count as decimal ASCII, exits — **zero
-libc**.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. `_start` in `wc_nl.s` (or split helpers). Open path from argv[1] or default
-   `TASK.md`.
-2. Read file into a buffer (mmap or .bss). Count `\n`.
-3. Convert count to decimal ASCII without printf; `write` it + newline.
-4. Verify: `nm ./wc_nl` and `readelf -d ./wc_nl` show no NEEDED libc.
-5. `./wc_nl TASK.md` should print the newline count of this file.
+## Implement
 
-## Success
-Correct newline count; `nm`/`readelf` confirm no libc dependency.
+1. Freestanding `_start` in `wc_nl.s` (helpers OK): open argv[1] or default `TASK.md`.
+2. Read into mmap or `.bss`; count `\n`; write decimal ASCII + newline; exit.
+3. Verify: `nm ./wc_nl` and `readelf -d ./wc_nl` show no NEEDED libc.
+4. `./wc_nl TASK.md` prints this file's newline count.
 
-## Refs
-`man 2 open`, `man 2 read`, `man 2 write`, `man 2 close`, `man 2 mmap`,
-`man 2 exit`, `man 1 nm`, `man 1 readelf`, `unistd_64.h`
+## Done when
+
+- Correct newline count; no libc dependency.
+
+## Lookup
+
+`man 2 open`, `man 2 read`, `man 2 write`, `man 2 close`, `man 2 mmap`, `man 2 exit`,
+`man 1 nm`, `man 1 readelf`, `unistd_64.h`.

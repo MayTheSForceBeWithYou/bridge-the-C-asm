@@ -1,27 +1,19 @@
-# 27 — Asm calls C (Track B)
+# 27 — Asm calls C (practice)
 
-## Goal
-From asm, call a C function — callee-saved discipline + 16-byte align before
-`call`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Contract
-C provides:
-```c
-long c_triple(long x);  /* returns 3*x — already implemented in harness.c */
-```
-You implement in asm:
-```c
-long apply_triple(long x);  /* must call c_triple and return its result */
-```
+## Build and run
 
-## Do
-1. In `apply_triple.s`, set up args, align stack, `call c_triple`, return `%rax`.
-2. If you use callee-saved registers, save/restore them.
+1. In `apply_triple.s`, implement `long apply_triple(long x)` so it calls
+   `c_triple` (provided in `harness.c`) and returns that result.
+2. Set up args, align stack before `call`, save/restore callee-saved regs if
+   you use them.
 3. `make && make run`.
 
-## Success
-Harness prints `ok`.
+## Done when
 
-## Refs
-`man 1 as`, discover caller/callee-saved patterns from Track A `-O0` `.s`
-(look at which regs are pushed around calls). No ABI PDF.
+- Harness prints `ok`.
+
+## Lookup
+
+`man 1 as`; Track A `-O0` `.s` around calls for save patterns.

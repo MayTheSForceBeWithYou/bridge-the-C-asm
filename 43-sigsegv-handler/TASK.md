@@ -1,18 +1,18 @@
-# 43 — SIGSEGV handler (Track D)
+# 43 — SIGSEGV handler (practice)
 
-## Goal
-Install a `sigaction` handler for `SIGSEGV`, deliberately NULL-deref, handle
-it, and exit cleanly (no raw crash).
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Install handler with `sigaction(SIGSEGV, ...)`.
-2. In the handler: write a message (async-signal-safe: `write(2)` preferred
-   over `printf`), then `_exit(0)` or set a flag carefully.
+## Implement
+
+1. Install a `sigaction` handler for `SIGSEGV`.
+2. In the handler: async-signal-safe message (`write(2)`), then exit cleanly (e.g. `_exit(0)`).
 3. From `main`, dereference NULL after the handler is installed.
-4. Confirm process exits 0 and prints your handler message.
+4. Confirm exit 0 and the handler message.
 
-## Success
-`./prog` catches the fault and exits cleanly with a handler message.
+## Done when
 
-## Refs
-`man 2 sigaction`, `man 7 signal`, `man 2 write`, `man 2 getpid`, `man 3 exit`
+- `./prog` catches the fault, prints your message, and exits cleanly.
+
+## Lookup
+
+`man 2 sigaction`, `man 7 signal`, `man 2 write`, `man 2 getpid`, `man 3 exit`.

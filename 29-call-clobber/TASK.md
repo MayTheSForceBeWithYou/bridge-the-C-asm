@@ -1,20 +1,21 @@
-# 29 — Call clobbers (Track A micro-rep)
+# 29 — Call clobbers (practice)
 
-## Goal
-Which registers does a `call` smash from the caller's point of view?
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Write `main` that puts distinctive constants into several registers via
-   a small `static inline` asm blob *or* by calling a carefully written
-   helper — simplest path: write two C functions and inspect `-O0` asm
-   around a `call`, noting which regs the caller reloads after return.
-2. Alternatively: in gdb, `break` before/after a `call`, `info registers`.
+## Build and inspect
 
-## Observe / answer
-- List registers that are not preserved across the call (caller-saved /
-  clobbered).
-- List registers the callee must restore if used (callee-saved).
-- Derive this from *your* listing / gdb session, not from memory of an ABI doc.
+1. Write `main` that keeps distinctive values live across a `call` (helper or
+   libc). Inspect `-O0` asm for pre-call saves / post-call reloads — and/or use
+   gdb `info registers` before and after the `call`.
+2. Optionally inspect a callee prologue for pushes of preserved regs.
 
-## Refs
-`man 1 gcc`, `man 1 objdump`, `man 1 gdb`, gdb `help info registers`
+## Done when
+
+- You listed registers not preserved across the call (caller-saved / clobbered)
+  from *your* evidence.
+- You listed registers a callee must restore if used (callee-saved).
+- You did not rely on an ABI PDF.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`, `man 1 gdb`, gdb `help info registers`.

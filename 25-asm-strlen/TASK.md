@@ -1,19 +1,18 @@
-# 25 — `strlen`-like in asm (Track B)
+# 25 — `strlen`-like in asm (practice)
 
-## Goal
-Walk bytes until `\\0`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Contract
-```c
-long my_strlen(const char *s);  /* count bytes before NUL; s non-NULL */
-```
+## Build and run
 
-## Do
-1. Implement in `my_strlen.s` (load byte, test, increment, loop).
-2. `make && make run`.
+1. Implement `long my_strlen(const char *s)` in `my_strlen.s` (load byte, test,
+   increment, loop). Count bytes before NUL; `s` is non-NULL in tests.
+2. Do not call libc `strlen`.
+3. `make && make run`.
 
-## Success
-Harness prints `ok`.
+## Done when
 
-## Refs
-`man 1 as`, `info as`. Do not call libc `strlen`.
+- Harness prints `ok`.
+
+## Lookup
+
+`man 1 as`, `info as`.

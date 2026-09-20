@@ -1,20 +1,22 @@
-# 03 — Locals on the stack (Track A)
+# 03 — Locals on the stack (practice)
 
-## Goal
-Find where several local variables live at `-O0` vs `-O2`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. In `work()`, declare at least four locals of mixed types (`int`, `long`,
-   `char`, maybe an array of 4 ints). Touch each so they are not DCE'd
-   (e.g. take addresses, print, or return a combination).
+## Build and inspect
+
+1. In `work()`, declare at least four locals of mixed types (`int`, `long`, `char`,
+   and an array of 4 ints). Touch each so they stay live (addresses, print, or a
+   combined return).
 2. Emit asm at `-O0` and `-O2`.
+3. Record stack offsets, frame size, and what `-O2` changes — using the questions
+   in `LESSON.md`.
 
-## Observe / answer
-- At `-O0`, what stack offsets (`-N(%rbp)`) hold each local?
-- At `-O2`, which locals vanish into registers or disappear entirely?
-- How large is the stack frame (`sub $N,%rsp` or equivalent)?
+## Done when
 
-## Refs
-`man 1 gcc`, `man 1 objdump`, `info as` (addressing modes)
+- You mapped each `-O0` local to a `-N(%rbp)` offset (or explained an exception).
+- You stated the frame size from the listing.
+- You described which locals vanished into registers or disappeared at `-O2`.
 
-Also in nvim-dap: after `make`, launch `./prog` via Launch existing — see `NVIM_DAP.md`.
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`, `info as` (addressing modes).

@@ -1,28 +1,28 @@
-# 69 — dap breakpoints & step (Track C / dap)
+# 69 — dap breakpoints & step (practice)
 
-## Goal
-Practice the exact nvim-dap keys on a tiny C program. No instruction-level
-`stepi` claims — F10/F11/F12 are source-level steps.
+Read `LESSON.md` first. This file is only the lab.
 
 ## Do
-1. Implement `classify` and `accum` (see stubs). `make` → `./prog` prints `ok`.
-2. Open `prog.c`. Use **only** nvim-dap for the checklist below (gdb optional).
 
-### Student checklist (tick in your notes)
+1. Implement `classify` and `accum`. `make` → `./prog` prints `ok`.
+2. Open `prog.c`. Use **nvim-dap** for the checklist (gdb optional).
 
-- [ ] **F9** on the first line of `classify` — red breakpoint marker visible
-- [ ] `<leader>dc` → **"Launch existing executable"** → `./prog` (or Launch ./prog)
-- [ ] Session stops on the breakpoint; dap-ui opens (or `<leader>du`)
-- [ ] **F10** step over a few lines; virtual text / Scopes update
-- [ ] **F11** step into `accum` from `main` (set another F9 on the call if needed)
-- [ ] **F12** step out of `accum` back to `main`
-- [ ] `<leader>dB` conditional breakpoint on `classify` with condition `x == 0`
-      — continue until it stops only for the zero case
-- [ ] `<leader>de` hover on `x` / `n`
-- [ ] `<leader>dr` open REPL briefly; `<leader>dt` terminate
+### Checklist (tick in your notes)
 
-## Success
-`./prog` prints `ok`, and your checklist is complete. No solution file in-repo.
+- [ ] **F9** on first line of `classify` — red marker visible
+- [ ] `<leader>dc` → **"Launch existing executable"** → `./prog`
+- [ ] Session stops; dap-ui open (or `<leader>du`)
+- [ ] **F10** a few lines; virtual text / Scopes update
+- [ ] **F11** into `accum` from `main` (extra F9 on the call if needed)
+- [ ] **F12** step out of `accum`
+- [ ] `<leader>dB` on `classify` with `x == 0` — continue until only zero stops
+- [ ] `<leader>de` on `x` / `n`
+- [ ] `<leader>dr` briefly; `<leader>dt` terminate
 
-## Refs
-`NVIM_DAP.md`, `.vscode/launch.json`
+## Done when
+
+- `./prog` prints `ok` and the checklist is complete.
+
+## Lookup
+
+`NVIM_DAP.md`, `.vscode/launch.json`.

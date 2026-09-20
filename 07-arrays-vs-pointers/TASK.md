@@ -1,20 +1,20 @@
-# 07 — Arrays vs pointers (Track A)
+# 07 — Arrays vs pointers (practice)
 
-## Goal
-Check whether array indexing and pointer arithmetic produce the same asm.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement two functions that sum `n` ints:
-   - `int sum_idx(const int *a, int n);` using `a[i]`
-   - `int sum_ptr(const int *a, int n);` using pointer increment / `*p`
+## Build and inspect
+
+1. Implement `sum_idx` (use `a[i]`) and `sum_ptr` (pointer increment / `*p`) for
+   summing `n` ints.
 2. `make asm` at `-O0` and `-O2`. Diff the two functions' asm.
+3. Note scale factors and whether the shapes converge.
 
-## Observe / answer
-- At `-O0`, are the instruction sequences identical or merely equivalent?
-- At `-O2`, do they converge?
-- How is the scale factor for `int` visible (e.g. `leaq (,%reg,4)`)?
+## Done when
 
-## Refs
-`man 1 gcc`, `man 1 objdump`, `info as`
+- You stated whether `-O0` sequences were identical or merely equivalent.
+- You found evidence of stride 4 for `int`.
+- You recorded what `-O2` did to the pair.
 
-Also in nvim-dap: F9 on `sum_idx` / `sum_ptr`, memory-view the array — see `NVIM_DAP.md`.
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`, `info as`.

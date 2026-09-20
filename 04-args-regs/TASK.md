@@ -1,25 +1,21 @@
-# 04 — Argument registers (Track A)
+# 04 — Argument registers (practice)
 
-## Goal
-Discover the System V AMD64 integer argument-passing convention from compiler
-output — there is no ABI man page in the verified set.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement:
-   - `long f1(long a);`
-   - `long f2(long a, long b);`
-   - `long f6(long a,b,c,d,e,f);`  (six args)
-   - `long f7(long a,b,c,d,e,f,g);` (seven args)
-   Each should return a simple mix of its arguments (sum is fine).
-2. Call each from `main` with distinct constants. `make asm disasm`.
+## Build and inspect
 
-## Observe / answer
-- Which registers hold args 1..6? (Read the `.s` / disassembly — do not look up
-  an ABI PDF.)
-- Where does the 7th argument live?
-- Where does the return value appear for the caller?
+1. Implement `f1`, `f2`, `f6`, and `f7` as in the lesson goal (simple mixes/sums of
+   `long` args). Call each from `main` with distinct constants.
+2. `make asm disasm`.
+3. From the listings only, record registers for args 1–6, the home of arg 7, and
+   where the caller reads the return.
 
-## Refs
+## Done when
+
+- You can list args 1–6 registers from *your* asm (not from memory of a handout).
+- You showed where the seventh argument lives.
+- You identified the return-value register the caller uses.
+
+## Lookup
+
 `man 1 gcc`, `man 1 objdump` — discover ABI from output only.
-
-Also in nvim-dap: break in `f6`/`f7`, inspect arg registers in Scopes — see `NVIM_DAP.md`.

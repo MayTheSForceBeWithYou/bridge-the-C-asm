@@ -1,37 +1,25 @@
-# 71 — dap asm step (Track C / dap)
+# 71 — dap asm step (practice)
 
-## Goal
-`make` a harness + tiny `.s`, launch the **existing** multi-file binary in
-nvim-dap, break at the call, step into asm, observe registers / memory.
+Read `LESSON.md` first. This file is only the lab.
 
 ## Do
-1. Implement `twiddle` in `twiddle.s`: return `(a ^ b) + c` (System V regs).
-2. `make` → `./twiddle_test`. Confirm `make run` prints `ok`.
-3. Open `harness.c`. **F9** on the `twiddle(...)` call inside `expect`.
-4. `<leader>dc` → **"Launch existing executable"** → `./twiddle_test`
-   (not "Build current file" — that would miss `twiddle.s`).
-5. At the call: note `a`,`b`,`c` via Scopes / `<leader>de`.
-6. **F11** step into asm. Inspect register groups in Scopes for rdi/rsi/rdx/rax
-   equivalents as you step (F10 may skip coarse chunks — use F11 / continue).
-7. Optional: `<leader>dm` if you spill anything to the stack (this stub need not).
-8. `<leader>dt` when done.
 
-## gdb CLI (alternative)
+1. Implement `twiddle` in `twiddle.s`: `(a ^ b) + c` via System V regs. `make`
+   → `./twiddle_test`; `make run` prints `ok`.
+2. Open `harness.c`. **F9** on the `twiddle(...)` call inside `expect`.
+3. `<leader>dc` → **"Launch existing executable"** → `./twiddle_test` (not
+   "Build current file").
+4. Note `a`,`b`,`c` via Scopes / `<leader>de`. **F11** into asm; inspect
+   rdi/rsi/rdx/rax groups as you step. Optional `<leader>dm` if you spill.
+5. `<leader>dt` when done. gdb alternative: `break twiddle`, `info registers`,
+   `stepi`.
 
-```
-gdb -q ./twiddle_test
-(gdb) break twiddle
-(gdb) run
-(gdb) info registers rdi rsi rdx rax
-(gdb) stepi
-(gdb) info registers
-(gdb) continue
-(gdb) quit
-```
+## Done when
 
-## Success
-`./twiddle_test` prints `ok`. You stepped from harness into `.s` under nvim-dap
-(and/or gdb) and saw the ABI regs.
+- `./twiddle_test` prints `ok`.
+- You stepped from harness into `.s` under nvim-dap (and/or gdb) and saw the
+  ABI regs.
 
-## Refs
-`NVIM_DAP.md`, `man 1 as`, `man 1 gdb`
+## Lookup
+
+`NVIM_DAP.md`, `man 1 as`, `man 1 gdb`.

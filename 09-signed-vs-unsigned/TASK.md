@@ -1,21 +1,21 @@
-# 09 — Signed vs unsigned compares (Track A)
+# 09 — Signed vs unsigned compares (practice)
 
-## Goal
-See `jl`/`jg` vs `jb`/`ja` (and friends) for signed vs unsigned.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement:
-   - `int cmp_signed(int a, int b);` → negative / zero / positive style result
-   - `int cmp_unsigned(unsigned a, unsigned b);` → same idea
-2. Also write a loop that exits when an index hits a limit — once with `int`,
-   once with `unsigned`. Prefer values near the top of the range so the
-   difference matters conceptually.
-3. `make asm`.
+## Build and inspect
 
-## Observe / answer
-- Which conditional-jump mnemonics appear for signed vs unsigned?
-- After `cmp`, what flags do those jumps consult? (Infer from names + `info as`
-  or `gdb help` / experimentation.)
+1. Implement `cmp_signed` and `cmp_unsigned` returning a negative / zero /
+   positive style result.
+2. Write a loop that exits when an index hits a limit — once `int`, once
+   `unsigned`. Prefer limits near the top of the range conceptually.
+3. `make asm`. Record jump mnemonics for each.
 
-## Refs
-`man 1 objdump`, `info as`, `man 1 gcc`
+## Done when
+
+- You listed signed vs unsigned conditional-jump mnemonics from *your* `.s`.
+- You can say (in one sentence) what flag story those jumps consult.
+- You tied a loop-exit jump back to the C type that caused it.
+
+## Lookup
+
+`man 1 objdump`, `info as`, `man 1 gcc`.

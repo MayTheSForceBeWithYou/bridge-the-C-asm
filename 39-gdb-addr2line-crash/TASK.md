@@ -1,42 +1,21 @@
-# 39 — addr2line on a crash (nvim-dap + gdb) (Track C)
+# 39 — addr2line on a crash (practice)
 
-## Goal
-Crash on a NULL deref, capture the faulting address from a backtrace, map it
-back with `addr2line`.
+Read `LESSON.md` first. This file is only the lab.
 
-## nvim-dap (primary for the crash UI)
+## Do
 
-1. Keep `boom()` as a NULL deref. Build with `-ggdb` (default): `make`.
-2. Open `prog.c`. Optional: **F9** on `boom` so you stop before the deref;
-   or launch with no bp and let it crash.
-3. `<leader>dc` → Launch existing → `./prog`.
-4. After the crash / stop: **Stacks** panel — note the faulting frame / address.
-5. Still run `addr2line` (required — stacks alone are not enough for this TASK):
-```
-addr2line -e ./prog -f -C 0xADDR
-```
+1. Keep `boom()` as a NULL deref. `make` (`-ggdb`).
+2. nvim-dap: optional **F9** on `boom`; launch `./prog`; after crash/stop, note
+   the faulting address from **Stacks**.
+3. Required: `addr2line -e ./prog -f -C 0xADDR` (use your address).
+4. gdb alternative: `run`, `bt`, `info registers rip`, then the same
+   `addr2line`. Optional: strip a copy and compare mapping.
 
-## gdb CLI (alternative)
+## Done when
 
-```
-gdb -q ./prog
-(gdb) run
-(gdb) bt
-(gdb) info registers rip
-(gdb) quit
-```
+- You mapped a crash address to `boom` / a source line with `addr2line`.
+- Program crashing is expected. You used Stacks and/or `bt`.
 
-Then:
-```
-addr2line -e ./prog -f -C 0xADDR
-```
+## Lookup
 
-Compare `addr2line` output to the stacks / `bt` source line. Any difference?
-(inlining, missing `-g`, stripped binary — try `strip` a copy and repeat.)
-
-## Success
-You mapped a crash address to `boom` / a source line with `addr2line`.
-Program crashing is expected. You used Stacks and/or `bt`.
-
-## Refs
-`NVIM_DAP.md`, `man 1 addr2line`, `man 1 gdb`, gdb `help bt`, `man 1 strip`
+`NVIM_DAP.md`, `man 1 addr2line`, `man 1 gdb`, gdb `help bt`, `man 1 strip`.

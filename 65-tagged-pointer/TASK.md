@@ -1,16 +1,17 @@
-# 65 — tagged pointer (Track G)
+# 65 — tagged pointer (practice)
 
-## Goal
-Stash a 3-bit tag in the low bits of an 8-byte-aligned pointer; extract with
-mask/shift; inspect `and`/`or` in asm.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Assume pointers from `malloc` are >=8-byte aligned.
-2. `tag_ptr(p, tag)` / `untag_ptr` / `get_tag`.
-3. `make asm` — find the masking ops.
+## Implement
 
-## Success
-Round-trip pointer + tag works; `./prog` prints `ok`.
+1. Assume `malloc` pointers are ≥8-byte aligned.
+2. `tag_ptr` / `untag_ptr` / `get_tag` for a 3-bit tag.
+3. `make asm` — find masking ops. Round-trip; print `ok`.
 
-## Refs
-`man 1 gcc`, `man 1 objdump`
+## Done when
+
+- Round-trip works; `./prog` prints `ok`.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`.

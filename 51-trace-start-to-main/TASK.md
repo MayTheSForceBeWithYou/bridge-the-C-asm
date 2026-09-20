@@ -1,22 +1,18 @@
-# 51 — _start to main (Track E)
+# 51 — _start to main (practice)
 
-## Goal
-Disassemble `_start` and reason how control reaches `main` with `argc`/`argv`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. `make` then:
-```
-objdump -d -j .text ./prog | less
-# find <_start>:
-objdump -d ./prog | grep -A40 '<_start>:'
-```
-2. Trace by hand: which call goes toward `__libc_start_main` / main?
-3. Docs: `info libc` if useful for startup; there is no man page for
-   `__libc_start_main` here — reason from disassembly + info libc.
-4. Optional gdb: `break _start`, `run`, `stepi` until `main`.
+## Trace
 
-## Success
-Written trace from `_start` to `main` citing your disassembly lines.
+1. `make`; `objdump -d ./prog | grep -A40 '<_start>:'` (and browse `.text`).
+2. Hand-trace calls toward `__libc_start_main` / `main`.
+3. Optional gdb: `break _start`, `stepi` until `main`.
+4. Write the trace citing your disassembly lines (`info libc` OK; no fake man page).
 
-## Refs
-`man 1 objdump`, `info libc`, `man 5 elf`, `man 1 gdb`
+## Done when
+
+- Written trace from `_start` to `main` grounded in your dump.
+
+## Lookup
+
+`man 1 objdump`, `info libc`, `man 5 elf`, `man 1 gdb`.

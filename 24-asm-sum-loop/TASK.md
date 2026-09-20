@@ -1,19 +1,17 @@
-# 24 — Sum loop in asm (Track B)
+# 24 — Sum loop in asm (practice)
 
-## Goal
-Labels + conditional jumps, no C control flow inside the routine.
+Read `LESSON.md` first. This file is only the lab.
 
-## Contract
-```c
-long sum_to(long n);  /* sum of 1..n; sum_to(0)==0; n>=0 assumed for tests */
-```
+## Build and run
 
-## Do
-1. Implement with an explicit loop (`cmp`/`jcc`/`jmp` as needed) in `sum_to.s`.
+1. Implement `long sum_to(long n)` in `sum_to.s` with an explicit loop
+   (`cmp` / `jcc` / `jmp` as needed). `sum_to(0) == 0`; tests use `n >= 0`.
 2. `make && make run`.
 
-## Success
-Harness prints `ok`.
+## Done when
 
-## Refs
-`man 1 as`, `info as`, compare jump shapes to exercise 08.
+- Harness prints `ok`.
+
+## Lookup
+
+`man 1 as`, `info as`; compare jump shapes to exercise 08.

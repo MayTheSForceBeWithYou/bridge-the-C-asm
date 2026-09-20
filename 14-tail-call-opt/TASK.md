@@ -1,18 +1,20 @@
-# 14 — Tail-call optimization? (Track A)
+# 14 — Tail-call optimization? (practice)
 
-## Goal
-See whether `-O2` turns a tail-recursive factorial into a jump.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement two versions:
-   - `long fac_naive(long n);` — classic `n * fac(n-1)`
-   - `long fac_tail(long n, long acc);` — tail-recursive helper
+## Build and inspect
+
+1. Implement `fac_naive(long n)` as `n * fac(n-1)` and `fac_tail(long n, long acc)`
+   as a tail-recursive helper.
 2. Compare `make asm` vs `make O=2 asm`.
+3. Confirm with `objdump -d` on both builds.
 
-## Observe / answer
-- Does `fac_tail` become a loop (`jmp` to itself) at `-O2`?
-- Does `fac_naive`? Why / why not (look at the work after the recursive call)?
-- Confirm with `objdump -d` on both builds.
+## Done when
 
-## Refs
-`man 1 gcc`, `man 1 objdump`, `info gcc`
+- You said whether `fac_tail` became a self-`jmp` / loop at `-O2`.
+- You explained why `fac_naive` did or did not.
+- You cited concrete instructions, not vibes.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`, `info gcc`.

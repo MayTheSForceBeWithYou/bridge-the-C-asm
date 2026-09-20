@@ -1,40 +1,42 @@
-# C and x86-64 Assembly Grind
+# Bridge the C ↔ asm
 
 Learn-by-doing track: write C, study the asm the compiler emits, hand-write
-`.s`, debug live in **nvim-dap** (primary in-editor) and/or **gdb** CLI, own
-syscalls/memory, open the ELF/linker layer, measure with a cycle counter, and
-play with bits. No tutorials in the exercise folders — only prompts, stubs, and
-tools you already have (`man`, `info`, `gcc`, `as`, `ld`, `objdump`, `gdb`,
-nvim + CodeLLDB).
+`.s`, debug live in **nvim-dap** and/or **gdb**, own syscalls/memory, open the
+ELF/linker layer, measure with a cycle counter, and play with bits.
 
 Sibling tracks under `~/dev/c/` cover beginner C and RPGs. This one starts past
 that and leans on the C↔asm relationship.
 
+**How learning works here:** each exercise has a `LESSON.md` that *teaches* the
+idea (mechanisms, worked example, common wrong readings) and a `TASK.md` that is
+the practice you still do yourself. Man and info pages are **lookup** — flag
+spellings, struct names, syscall numbers — not a substitute for the lesson.
+See `AUTHORING.md` for the content shape (adapted from Otto Didact's authoring guide).
+
 ## Philosophy
 
-1. **Reps over reading.** Many short exercises beat a few long lectures.
-2. **Look at real output.** Every task ends with `objdump`, `nm`, `size`,
-   `readelf`, or a live debugger against *your* binary — not prose about what
-   they would show.
-3. **Live debugging is first-class.** Track C drives interactive debugging —
-   **nvim-dap** breakpoints / step / scopes / memory (`NVIM_DAP.md`) and/or
-   `gdb` (registers, watchpoints, TUI, stripped binaries) — same “look at
-   reality” idea while the program runs.
-4. **Measure, don’t guess.** Track F times code with `rdtscp` and ties cycle
-   counts back to asm shape and microarchitecture effects.
-5. **Docs live in the terminal.** Prefer `man` / `info` / `gdb help` (see `REFS.md`).
-   Do not hunt for missing man pages; if it is not in `REFS.md`, discover it from
-   compiler output instead (especially ABI register conventions).
-6. **No solutions.** Verification = compile/assemble/link + expected exit code or
-   stdout documented in each `TASK.md`. Track A/B harnesses print `ok` / exit 0
-   when behavior is correct.
-7. **Self-contained dirs.** Jump around; each exercise builds with `make -C <dir>`.
+1. **Teach in the repo, practice in the lab.** Read `LESSON.md` before `TASK.md`.
+   Untaught reps waste time; unpracticed teaching does not stick.
+2. **Man/info are reference, not curriculum.** When you already know *what* you
+   need (e.g. "stop after preprocess"), look up `-E` in `man 1 gcc`. Do not try
+   to learn the pipeline by reading the entire gcc manual.
+3. **Reps over lectures — once the schema is in place.** Many short exercises beat
+   a few long talks; each rep should exercise a judgement the lesson named.
+4. **Look at real output.** Every task ends with `objdump`, `nm`, `size`,
+   `readelf`, or a live debugger against *your* binary.
+5. **Live debugging is first-class.** Track C uses **nvim-dap** (`NVIM_DAP.md`)
+   and/or `gdb` while the program runs.
+6. **Measure, don't guess.** Track F times code with `rdtscp` and ties cycle
+   counts back to asm shape.
+7. **No solution keys.** Harnesses print `ok` / exit 0 when behavior is correct.
+   Lessons may interpret artifacts; they do not fill in your TODOs.
+8. **Self-contained dirs.** `make -C <dir>`; jump around when you want.
 
 ## Layout
 
 ```
-c-and-asm-grind/
-  README.md REFS.md NVIM_DAP.md Makefile common.mk .gitignore
+bridge-the-C-asm/
+  README.md AUTHORING.md REFS.md NVIM_DAP.md Makefile common.mk .gitignore
   .vscode/launch.json
   PLAN_PROMPT.md EXTENDED_PROMPT.md
   01-hello-pipeline/ ... 75-asm-pie-riprel/
@@ -169,7 +171,7 @@ compare optimization. Track B/D freestanding exercises use `as` + `ld` or
 
 ## Suggested workflow (every exercise)
 
-1. Read `TASK.md`.
+1. Read `LESSON.md`, then `TASK.md`.
 2. Open the cited `man`/`info` page from `REFS.md` (and `NVIM_DAP.md` for debug).
 3. Fill the TODO stub (C or `.s`).
 4. `make` → run → inspect (`make asm disasm`, nvim-dap / `gdb`, `nm`, …).

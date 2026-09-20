@@ -1,17 +1,17 @@
-# 63 — float union IEEE-754 (Track G)
+# 63 — float union IEEE-754 (practice)
 
-## Goal
-Type-pun a `float` through a `union` with `uint32_t`. **TRACE first on paper**
-before running: predict sign/exponent/mantissa bits.
+Read `LESSON.md` first. This file is only the lab.
 
 ## Do
-1. On paper: for `float f = 1.0f` (and `-2.5f`), write expected 32-bit layout.
-2. Implement union pun; print hex bits.
-3. Compare to your prediction; decode fields by hand.
 
-## Success
-Printed hex matches your paper prediction for at least `1.0f` and `-2.5f`.
-Harness prints `ok` when hex equals documented expected constants.
+1. On paper: predict bits for `1.0f` and `-2.5f`.
+2. Implement union pun; print hex; decode fields by hand.
+3. Compare to predictions; harness `ok` when hex matches expected constants.
 
-## Refs
-`man 1 gcc`, `man 1 objdump` (optional asm peek)
+## Done when
+
+- Printed hex matches paper for at least `1.0f` and `-2.5f`; harness `ok`.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump` (optional).

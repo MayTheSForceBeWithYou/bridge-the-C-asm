@@ -1,19 +1,21 @@
-# 01 — Hello pipeline (Track A)
+# 01 — Hello pipeline (practice)
 
-## Goal
-Run the full translation pipeline on a tiny program and know what each artifact is.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. `make` (binary should already build from the starter).
+## Build and inspect
+
+1. `make` — confirm `./hello` runs.
 2. `make preprocess asm obj disasm` — produce `hello.i`, `hello.s`, `hello.o`, `hello.lst`.
-3. Skim each file. Then change the string in `hello.c`, rebuild the pipeline, and
-   note what changed in `.i` vs `.s` vs `.lst`.
+3. Skim each artifact using the questions in `LESSON.md` → Check yourself.
+4. Change the string in `hello.c`, rebuild the full pipeline, and note what changed in
+   `.i` vs `.s` vs `.lst` (data vs structure).
 
-## Observe / answer
-- What is left in `.i` that was not in `.c`? (`man 1 gcc` — look at `-E`)
-- What section names appear around your string in `.s`?
-- How does `hello.o` differ from the final `hello` binary? (`man 5 elf`, `man 1 objdump`, `readelf -h`)
-- In `hello.lst`, find `main`. Which instructions call into libc?
+## Done when
 
-## Refs
-`man 1 gcc`, `man 5 elf`, `man 1 objdump`, `man 1 readelf`, `info gcc`
+- You can point at each artifact and say what job produced it.
+- You found `main` in `hello.lst` and identified the call toward libc.
+- You verified your "what changes when the string changes" prediction against the files.
+
+## Lookup
+
+Flag spellings only: `man 1 gcc`, `man 1 objdump`, `man 1 readelf`, `man 5 elf`.

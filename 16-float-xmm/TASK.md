@@ -1,20 +1,21 @@
-# 16 — Float / double in xmm* (Track A)
+# 16 — Float / double in xmm* (practice)
 
-## Goal
-Contrast FP argument/return registers with the integer convention you found
-in exercises 04–05.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement:
-   - `float addf(float a, float b);`
-   - `double muld(double a, double b);`
-   - a mixed function `double mix(double a, int n);`
+## Build and inspect
+
+1. Implement `addf(float, float)`, `muld(double, double)`, and
+   `mix(double a, int n)`.
 2. `make asm disasm`.
+3. Record XMM usage for args/returns, the GPR for the mixed int, and sample
+   `*ss` / `*sd` opcodes.
 
-## Observe / answer
-- Which `xmm*` registers carry FP args / returns?
-- How is the `int` mixed with a `double` arg — which GP register?
-- Spot `addss`/`addsd`/`mulss`/`mulsd` (names vary; read your listing).
+## Done when
 
-## Refs
+- You named the XMM registers used for FP args/returns from *your* listing.
+- You showed where the `int` goes in `mix`.
+- You spotted at least one scalar SSE arithmetic opcode in context.
+
+## Lookup
+
 `man 1 gcc`, `man 1 objdump` — discover FP ABI from output.

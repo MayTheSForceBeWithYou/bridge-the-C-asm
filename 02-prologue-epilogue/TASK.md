@@ -1,18 +1,21 @@
-# 02 — Prologue / epilogue (Track A)
+# 02 — Prologue / epilogue (practice)
 
-## Goal
-See what a nearly-empty function costs at `-O0` vs `-O2`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement `void empty(void)` as a truly empty body (just `{}`).
-2. `make asm` then `make O=2 asm` (save/compare both `.s` files — copy aside).
+## Build and inspect
+
+1. Implement `void empty(void)` as a truly empty body (`{}`).
+2. Call it from `main`. `make asm`, then `make O=2 asm` (copy both `.s` files aside).
 3. Also `make disasm` and `make O=2 disasm`.
+4. Answer the observe questions in `LESSON.md` → Check yourself using your listings.
 
-## Observe / answer
-- At `-O0`, what instructions open and close `empty`? What about `main`?
-- At `-O2`, does `empty` still exist? Is it inlined? Eliminated?
-- What do `push %rbp` / `mov %rsp,%rbp` accomplish? Confirm by reading the `.s`
-  comments from `-fverbose-asm`.
+## Done when
 
-## Refs
-`man 1 gcc` (`-O`, `-S`, `-fverbose-asm`), `man 1 objdump`, `info gcc`
+- You can point at prologue / epilogue instructions in the `-O0` `.s`.
+- You can say what happened to `empty` and its `call` at `-O2`.
+- You explained `push %rbp` / `mov %rsp,%rbp` in your own words (with verbose-asm
+  comments as backup).
+
+## Lookup
+
+Flag spellings only: `man 1 gcc`, `man 1 objdump`, `info gcc`.

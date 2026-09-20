@@ -1,22 +1,18 @@
-# 28 — Recursive factorial in pure asm (Track B, stretch)
+# 28 — Recursive factorial in pure asm (practice)
 
-## Goal
-Manual stack frames + recursive `call`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Contract
-```c
-long fac(long n);  /* n>=0; fac(0)=1 */
-```
-- Implement recursion in asm (call `fac` from itself).
-- Save whatever you need across the recursive call.
-- Return result in `%rax`.
+## Build and run
 
-## Do
-1. Fill `fac.s`.
+1. Implement `long fac(long n)` in `fac.s` with real recursive `call`s
+   (`n >= 0`; `fac(0) = 1`). Save what you need across the call; return in
+   `%rax`.
 2. `make && make run`.
 
-## Success
-Harness prints `ok` for several `n`.
+## Done when
 
-## Refs
-Compare to exercises 13–14 (C recursion / tail calls). `man 1 as`, `info as`.
+- Harness prints `ok` for several `n`.
+
+## Lookup
+
+`man 1 as`, `info as`; compare to exercises 13–14.

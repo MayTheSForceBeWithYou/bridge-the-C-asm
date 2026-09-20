@@ -1,34 +1,19 @@
-# 47 — static vs dynamic hello (Track E)
+# 47 — static vs dynamic hello (practice)
 
-## Goal
-Same hello source; compare dynamic vs static (or static-pie) with `ldd`,
-`size`, `readelf -d`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement a tiny hello in `hello.c`.
-2. Build dynamic (default) and attempt static:
-```
-make
-cp hello hello.dyn
-gcc -ggdb -static -o hello.static hello.c
-# If -static fails on Arch (missing glibc static libs):
-#   sudo pacman -S glibc  # static bits vary; or skip static and instead:
-#   gcc -ggdb -static-pie -o hello.static hello.c
-# If both fail: document the linker error and still deeply analyze hello.dyn
-# with ldd / size / readelf -d / objdump -d.
-```
-3. Compare:
-```
-ldd ./hello.dyn
-ldd ./hello.static || true
-size ./hello.dyn ./hello.static
-readelf -d ./hello.dyn
-readelf -d ./hello.static || true
-```
-4. Answer: which has a dynamic section / INTERP? Which is larger? Why?
+## Build and compare
 
-## Success
-You have a filled comparison table (dyn always; static if link succeeded).
+1. Tiny hello in `hello.c`; `make`; keep a dynamic copy.
+2. Try `gcc -ggdb -static -o hello.static hello.c` (or `-static-pie` if needed). If both
+   fail, document the error and analyze `hello.dyn` thoroughly.
+3. Compare with `ldd`, `size`, `readelf -d` on each artifact you have.
 
-## Refs
-`man 1 ldd`, `man 1 size`, `man 1 readelf`, `man 5 elf`, `man 1 gcc`
+## Done when
+
+- You have a filled comparison table (dyn always; static if link succeeded).
+- You can answer: who has dynamic section / INTERP, who is larger, why.
+
+## Lookup
+
+`man 1 ldd`, `man 1 size`, `man 1 readelf`, `man 5 elf`, `man 1 gcc`.

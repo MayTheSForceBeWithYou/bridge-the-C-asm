@@ -1,18 +1,17 @@
-# 55 — rdtscp cycle timer (Track F)
+# 55 — rdtscp cycle timer (practice)
 
-## Goal
-Hand-roll a cycle counter with **`rdtscp`** (not plain `rdtsc`) and time a
-simple loop. Relative comparisons only — absolute counts vary.
+Read `LESSON.md` first. This file is only the lab.
 
-This CPU has `rdtscp` + `constant_tsc` (verified).
+## Implement
 
-## Do
-1. Implement `rdtscp_now()` via inline asm Extended Asm (or tiny `.s`).
-2. Time a loop of ~10M increments; print elapsed cycles.
-3. Run thrice — note variance. Never treat one number as "correct".
+1. `rdtscp_now()` via Extended Asm or tiny `.s` — **`rdtscp`**, not `rdtsc`.
+2. Time ~10M increments; print elapsed cycles.
+3. Run thrice; note variance. Print `ok`.
 
-## Success
-`./prog` prints three positive cycle deltas and `ok`.
+## Done when
 
-## Refs
-`man 1 gcc` (Extended Asm), `info gcc`, exercise 19
+- `./prog` prints three positive cycle deltas and `ok`.
+
+## Lookup
+
+`man 1 gcc`, `info gcc`, exercise 19. This CPU: `rdtscp` + `constant_tsc`.

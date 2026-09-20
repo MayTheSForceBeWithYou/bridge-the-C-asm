@@ -1,15 +1,18 @@
-# 31 — Conditional move (Track A micro-rep)
+# 31 — Conditional move (practice)
 
-## Goal
-See `cmov*` vs branching for simple conditionals under optimization.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement `int max(int a, int b);` and `int abs_int(int x);` in straightforward C.
+## Build and inspect
+
+1. Implement straightforward `int max(int a, int b);` and `int abs_int(int x);`.
 2. Compare `make asm` vs `make O=2 asm`.
 
-## Observe / answer
-- At `-O2`, does GCC emit `cmov*` / other branchless forms?
-- At `-O0`, what do you get instead?
+## Done when
 
-## Refs
-`man 1 gcc`, `man 1 objdump`, `info as`
+- You described the `-O0` branchy shape for at least one function.
+- You recorded whether `-O2` emitted `cmov*` or another branchless form.
+- You cited instructions from *your* listings.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`, `info as`.

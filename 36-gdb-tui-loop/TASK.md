@@ -1,44 +1,20 @@
-# 36 — gdb TUI loop (nvim-dap + gdb) (Track C)
+# 36 — gdb TUI loop (practice)
 
-## Goal
-Watch a register / accumulator increment through a loop. gdb TUI
-(`layout regs` / `layout asm`) is one view; dap-ui + virtual text is another.
+Read `LESSON.md` first. This file is only the lab.
 
-## nvim-dap (primary in-editor)
+## Do
 
-1. Implement `sum_to` so `sum_to(10)==55`.
-2. `make`. Open `prog.c`. **F9** on `sum_to`.
-3. `<leader>dc` → Launch existing → `./prog` (or **"Launch ./prog"**).
-4. Step the loop with **F10** / **F11**. Watch **virtual text** and **Scopes**
-   update each iteration.
-5. Optional: Watches on the accumulator / `n`. Compare the feel to gdb TUI —
-   dap-ui is not a 1:1 `layout regs` clone; both show live state.
+1. Implement `sum_to` so `sum_to(10)==55`. `make` → `./prog` prints `ok`.
+2. nvim-dap: **F9** on `sum_to`; launch `./prog`; step the loop with **F10** /
+   **F11**; watch virtual text / Scopes (optional Watches on the accumulator).
+3. Optional gdb TUI: `layout regs`, `layout asm`, `stepi` through several
+   iterations; `tui disable` if the UI glitches.
 
-## gdb CLI / TUI (alternative)
+## Done when
 
-```
-gdb -q ./prog
-(gdb) break sum_to
-(gdb) run
-(gdb) layout regs
-(gdb) layout asm
-(gdb) stepi
-(gdb) stepi
-(gdb) stepi
-(gdb) stepi
-(gdb) stepi
-(gdb) stepi
-(gdb) continue
-(gdb) quit
-```
+- `./prog` prints `ok`.
+- You stepped the loop body in nvim-dap and/or TUI and saw the increment live.
 
-(If TUI glitches: `tui disable` / `tui enable`, or use `layout split`.)
+## Lookup
 
-Watch the accumulator register change each iteration (`stepi` = instruction).
-
-## Success
-`./prog` prints `ok`. You stepped the loop body in nvim-dap and/or TUI and saw
-the increment.
-
-## Refs
-`NVIM_DAP.md`, `man 1 gdb`, `info gdb` (TUI node), gdb `help layout`, `help stepi`
+`NVIM_DAP.md`, `man 1 gdb`, `info gdb` (TUI), gdb `help layout`, `help stepi`.

@@ -1,17 +1,21 @@
-# 12 — String literals in `.rodata` (Track A)
+# 12 — String literals in `.rodata` (practice)
 
-## Goal
-Find where string literals live and how they are referenced.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Write a program with several string literals (some identical, some used once,
-   maybe a `char []` mutable copy vs `const char *`).
-2. `make asm obj disasm`, then `objdump -s -j .rodata prog` (and/or `readelf -x .rodata`).
+## Build and inspect
 
-## Observe / answer
-- Are identical literals merged?
-- How does a `printf("...")` reference the bytes — RIP-relative? Absolute?
-- What changes if you put the characters in a mutable `char buf[] = "...";`?
+1. Write a program with several string literals (some identical), plus a mutable
+   `char buf[] = "...";` contrasted with `const char *`.
+2. `make asm obj disasm`, then `objdump -s -j .rodata prog` and/or
+   `readelf -x .rodata prog`.
+3. Answer merging, addressing mode, and mutable-buffer questions from the lesson.
 
-## Refs
-`man 1 objdump`, `man 1 readelf`, `man 5 elf`, `man 1 gcc`
+## Done when
+
+- You found the literal bytes in `.rodata`.
+- You described how `printf("...")` references them in asm.
+- You explained what changes for a mutable `char buf[]` initializer.
+
+## Lookup
+
+`man 1 objdump`, `man 1 readelf`, `man 5 elf`, `man 1 gcc`.

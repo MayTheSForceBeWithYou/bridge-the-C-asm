@@ -1,25 +1,17 @@
-# 50 — -fvisibility=hidden (Track E)
+# 50 — -fvisibility=hidden (practice)
 
-## Goal
-See which symbols vanish from the dynamic symbol table with
-`-fvisibility=hidden`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Build default and hidden:
-```
-make
-gcc -ggdb -O0 -fvisibility=hidden -o prog.hidden prog.c
-nm ./prog
-nm ./prog.hidden
-readelf --dyn-syms ./prog
-readelf --dyn-syms ./prog.hidden
-```
-2. Which functions remain exported? What does `visibility` change for a
-   non-shared executable vs if this were a `.so`? (Reason from `nm` /
-   dyn-syms output.)
+## Build and compare
 
-## Success
-You documented symbol differences before/after `-fvisibility=hidden`.
+1. `make`; also `gcc -ggdb -O0 -fvisibility=hidden -o prog.hidden prog.c`.
+2. Compare `nm` and `readelf --dyn-syms` on both binaries.
+3. Note which functions remain exported; reason about executable vs `.so` stakes.
 
-## Refs
-`man 1 nm`, `man 1 readelf`, `man 1 gcc`, `info gcc`
+## Done when
+
+- You documented symbol differences before/after `-fvisibility=hidden`.
+
+## Lookup
+
+`man 1 nm`, `man 1 readelf`, `man 1 gcc`, `info gcc`.

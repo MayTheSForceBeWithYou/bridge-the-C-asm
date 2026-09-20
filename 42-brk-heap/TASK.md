@@ -1,22 +1,18 @@
-# 42 — brk heap growth (Track D)
+# 42 — brk heap growth (practice)
 
-## Goal
-Grow the data break with `brk(2)`, use the new memory, contrast with libc
-`malloc` (optional strace).
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. In `prog.c`, call `sbrk(0)` / `brk` (or syscall wrappers) to:
-   - query current break
-   - grow by 4096
-   - write/read a pattern in the new region
-2. Print old/new break addresses (printf OK here — this exercise is about
-   the break, not nostdlib).
-3. Optional: `command -v strace && strace -e brk,mmap ./prog` after also
-   calling `malloc(1<<20)` once — note whether glibc used `brk` or `mmap`.
-   Fallback without strace: read `man 2 brk` and `info libc` malloc notes.
+## Implement
 
-## Success
-`./prog` prints `ok` after a successful grow + pattern check. Exits 0.
+1. In `prog.c`, use `sbrk`/`brk` to query the break, grow by 4096, and pattern-check the new region.
+2. Print old/new break addresses; printf is OK.
+3. Print `ok` and exit 0 on success.
+4. Optional: `command -v strace && strace -e brk,mmap ./prog` after also `malloc(1<<20)`.
 
-## Refs
-`man 2 brk`, `man 2 sbrk`, `man 2 mmap`, `info libc`, `man 3 printf`
+## Done when
+
+- `./prog` prints `ok` after grow + pattern check and exits 0.
+
+## Lookup
+
+`man 2 brk`, `man 2 sbrk`, `man 2 mmap`, `info libc`, `man 3 printf`.

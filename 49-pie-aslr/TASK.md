@@ -1,34 +1,18 @@
-# 49 — PIE vs -no-pie / ASLR (Track E)
+# 49 — PIE vs -no-pie / ASLR (practice)
 
-## Goal
-`readelf -h`: PIE is `Type: DYN`, `-no-pie` is `Type: EXEC`. Observe ASLR
-base change across gdb runs.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Build both:
-```
-make
-gcc -ggdb -O0 -no-pie -o prog.nopie prog.c
-readelf -h ./prog | grep Type
-readelf -h ./prog.nopie | grep Type
-```
-2. gdb ASLR check on PIE binary:
-```
-gdb -q ./prog
-(gdb) break main
-(gdb) run
-(gdb) info proc mappings
-(gdb) print/x $rip
-(gdb) kill
-(gdb) run
-(gdb) print/x $rip
-(gdb) quit
-```
-3. Did the text base / `$rip` change between runs? Repeat with
-   `set disable-randomization on` and compare.
+## Build and observe
 
-## Success
-You recorded DYN vs EXEC and saw ASLR move the PIE base (unless disabled).
+1. `make`; also `gcc -ggdb -O0 -no-pie -o prog.nopie prog.c`.
+2. `readelf -h` on both; record `Type:`.
+3. gdb on PIE: break `main`, two `run`s comparing `$rip` / mappings; repeat with
+   `set disable-randomization on`.
 
-## Refs
-`man 1 readelf`, `man 5 elf`, `man 1 gdb`, `man 1 gcc`
+## Done when
+
+- You recorded DYN vs EXEC and saw ASLR move the PIE base (unless disabled).
+
+## Lookup
+
+`man 1 readelf`, `man 5 elf`, `man 1 gdb`, `man 1 gcc`.

@@ -1,21 +1,20 @@
-# 11 — Globals and sections (Track A)
+# 11 — Globals and sections (practice)
 
-## Goal
-Map C storage to ELF sections with `nm` / `size` / `objdump -h`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Define:
-   - a modified global (`int g = 1;`)
-   - an uninitialized global (`int h;`)
-   - a `static` file-scope variable
-   - a `const` global string or int
-   - a local `static` inside a function
-2. Build, then run: `nm prog`, `size prog`, `objdump -h prog`, `readelf -S prog`.
+## Build and inspect
 
-## Observe / answer
-- Which symbols are in `.data`, `.bss`, `.rodata`, `.text`?
-- How do `static` symbols appear in `nm` vs globals?
-- What do the `nm` type letters mean here? (`man 1 nm`)
+1. Define a modified global, an uninitialized global, a file-scope `static`, a
+   `const` global, and a local `static` inside a function.
+2. Build, then run `nm prog`, `size prog`, `objdump -h prog`, `readelf -S prog`.
+3. Map each symbol to `.data` / `.bss` / `.rodata` / `.text` and note `nm` letters.
 
-## Refs
-`man 1 nm`, `man 1 size`, `man 1 objdump`, `man 1 readelf`, `man 5 elf`
+## Done when
+
+- You placed each object in a section with evidence.
+- You explained how `static` symbols differ in `nm` from globals.
+- You stated what the relevant `nm` type letters mean *here*.
+
+## Lookup
+
+`man 1 nm`, `man 1 size`, `man 1 objdump`, `man 1 readelf`, `man 5 elf`.

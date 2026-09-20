@@ -1,17 +1,19 @@
-# 17 — Linked list pointer chasing (Track A)
+# 17 — Linked list pointer chasing (practice)
 
-## Goal
-See pointer-chasing loads in asm.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Define a simple `struct Node { int val; struct Node *next; };`
-2. Implement `int list_sum(const struct Node *head);`
+## Build and inspect
+
+1. Define `struct Node { int val; struct Node *next; };`.
+2. Implement `int list_sum(const struct Node *head);`.
 3. Build a short stack-allocated list in `main`. `make asm` at `-O0` and `-O2`.
 
-## Observe / answer
-- What load offsets fetch `val` vs `next`?
-- How does the loop test for NULL?
-- At `-O2`, are loads scheduled differently?
+## Done when
 
-## Refs
-`man 1 gcc`, `man 1 objdump`
+- You identified load offsets for `val` vs `next`.
+- You explained the NULL test in asm.
+- You noted any `-O2` scheduling / shape differences.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`.

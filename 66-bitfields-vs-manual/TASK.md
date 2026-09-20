@@ -1,14 +1,17 @@
-# 66 — bitfields vs manual pack (Track G)
+# 66 — bitfields vs manual pack (practice)
 
-## Goal
-Compare C bitfields vs shift/mask packing: `sizeof` and generated asm.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Define a bitfield struct and a manual `uint32_t` pack API for the same layout.
-2. Print `sizeof`; implement get/set; `make asm` and compare.
+## Implement
 
-## Success
-Same logical values via both APIs; notes on sizeof + asm differences. `ok`.
+1. Bitfield struct + manual `uint32_t` pack API for the same layout intent.
+2. Print `sizeof`; get/set both ways; `make asm` and compare.
+3. Same logical values; notes on sizeof + asm; `ok`.
 
-## Refs
-`man 1 gcc`, `man 1 objdump`, exercise 20
+## Done when
+
+- Both APIs agree; notes captured; `ok`.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`, exercise 20.

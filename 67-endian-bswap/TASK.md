@@ -1,16 +1,17 @@
-# 67 — endianness / bswap (Track G)
+# 67 — endianness / bswap (practice)
 
-## Goal
-Walk a multi-byte constant via `char*` on little-endian x86-64; flip with
-`__builtin_bswap32` / observe `bswap` mnemonic.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Set `uint32_t x = 0x12345678u`; print bytes via `(unsigned char *)&x`.
+## Implement
+
+1. `uint32_t x = 0x12345678u`; print bytes via `(unsigned char *)&x`.
 2. `y = __builtin_bswap32(x)`; print bytes again.
-3. `make O=2 asm` — find `bswap`.
+3. `make O=2 asm` — find `bswap`. Confirm LE + swapped value; `ok`.
 
-## Success
-Byte order matches LE expectation; swapped value correct. `ok`.
+## Done when
 
-## Refs
-`man 1 gcc`, `man 1 objdump`, `info gcc`
+- Byte order matches LE; swapped value correct; `ok`.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`, `info gcc`.

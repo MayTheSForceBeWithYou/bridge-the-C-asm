@@ -1,17 +1,20 @@
-# 08 — Loop jump shapes (Track A)
+# 08 — Loop jump shapes (practice)
 
-## Goal
-Compare `for` / `while` / `do`-`while` control flow in asm.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement three functions that sum `1..n` (or fold an array) using each loop
-   style exactly once.
+## Build and inspect
+
+1. Implement three functions that sum `1..n` (or fold an array), each using
+   `for`, `while`, or `do`/`while` exactly once.
 2. `make asm` at `-O0`. Sketch the jump graph for each.
+3. Optionally compare `make O=2 asm` for reshaping.
 
-## Observe / answer
-- Where is the loop test — top or bottom?
-- How many conditional jumps vs unconditional jumps per loop?
-- Does `-O2` reshape them into the same pattern?
+## Done when
 
-## Refs
-`man 1 gcc`, `man 1 objdump`
+- You marked test location (top vs bottom) for each function.
+- You counted conditional vs unconditional jumps per loop.
+- You noted whether `-O2` converged the shapes (if you built it).
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`.

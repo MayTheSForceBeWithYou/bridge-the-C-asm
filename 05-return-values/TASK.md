@@ -1,19 +1,20 @@
-# 05 — Return values (Track A)
+# 05 — Return values (practice)
 
-## Goal
-See where `int` / `long` / small-struct returns land.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement:
-   - `int ret_int(void);` → some constant
-   - `long ret_long(void);` → some constant
-   - `struct Pair { int x; int y; }; struct Pair ret_pair(void);`
-2. Call them from `main`, print results. `make asm` at `-O0`.
+## Build and inspect
 
-## Observe / answer
-- For `ret_int` / `ret_long`, which register holds the return at the `ret`?
-- For `ret_pair`, how does the compiler return the struct? (Look at both the
-  callee and the caller.) Does it use registers, a hidden pointer, or both?
+1. Implement `ret_int`, `ret_long`, and `struct Pair ret_pair(void)` as described
+   in the lesson.
+2. Call them from `main` and print results. `make asm` at `-O0`.
+3. For each, record the return channel from callee *and* caller.
 
-## Refs
+## Done when
+
+- You named the register used at `ret` for `ret_int` / `ret_long`.
+- You explained how `ret_pair` returns (registers, hidden pointer, or both) with
+  evidence from both sides of the call.
+
+## Lookup
+
 `man 1 gcc`, `man 1 objdump` — discover from output.

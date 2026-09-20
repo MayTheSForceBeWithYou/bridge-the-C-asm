@@ -1,18 +1,20 @@
-# 18 — `volatile` vs optimization (Track A)
+# 18 — `volatile` vs optimization (practice)
 
-## Goal
-Watch `-O2` delete non-volatile work that it must keep for `volatile`.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Implement two functions that do a busy-looking store/load loop:
-   - one with an ordinary `int`
-   - one with `volatile int`
+## Build and inspect
+
+1. Implement two busy-looking store/load loops: one with an ordinary `int`, one
+   with `volatile int`.
 2. `make O=2 asm disasm` and compare.
+3. Answer which loads/stores survive and what happened to the non-volatile loop.
 
-## Observe / answer
-- Which loads/stores survive for the volatile version?
-- Did the non-volatile loop collapse to a constant or disappear?
-- Why might that matter for MMIO-style code? (Think; no need for a man page.)
+## Done when
 
-## Refs
-`man 1 gcc`, `info gcc`, `man 1 objdump`
+- You showed surviving volatile memory operations in the listing.
+- You described how the non-volatile loop collapsed or disappeared.
+- You gave a one-sentence MMIO-style reason the distinction matters.
+
+## Lookup
+
+`man 1 gcc`, `info gcc`, `man 1 objdump`.

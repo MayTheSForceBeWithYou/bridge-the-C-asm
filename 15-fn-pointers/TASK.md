@@ -1,17 +1,19 @@
-# 15 — Function pointers (Track A)
+# 15 — Function pointers (practice)
 
-## Goal
-See how a call through a function pointer looks in asm.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Define two small functions (`inc`, `dec`) and a helper
-   `int apply(int (*fp)(int), int x);` that calls `fp(x)`.
+## Build and inspect
+
+1. Define `inc`, `dec`, and `int apply(int (*fp)(int), int x);` that calls `fp(x)`.
 2. From `main`, call `apply(inc, …)` and `apply(dec, …)`.
 3. `make asm disasm` at `-O0` and `-O2`.
 
-## Observe / answer
-- How is the function pointer loaded and called (`call *%reg`)?
-- At `-O2`, does `apply` get inlined? Does the indirect call become direct?
+## Done when
 
-## Refs
-`man 1 gcc`, `man 1 objdump`
+- You found how the pointer is loaded and called at `-O0` (`call *%reg` or
+  equivalent).
+- You recorded whether `-O2` inlined `apply` or turned the call direct.
+
+## Lookup
+
+`man 1 gcc`, `man 1 objdump`.

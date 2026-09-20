@@ -1,16 +1,17 @@
-# 58 — branch mispredict sorted vs shuffled (Track F)
+# 58 — branch mispredict sorted vs shuffled (practice)
 
-## Goal
-Sum values over a threshold on sorted vs shuffled data; measure with
-`rdtscp`. Tie to exercise 31 (`cmov` vs real branches).
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
+## Measure
+
 1. Fill array with random 0..255; copy; sort one copy.
-2. Time `sum_thresh` on sorted vs shuffled (same content, same N).
-3. Explain the gap via branch predictability / cmov (ex 31).
+2. Time `sum_thresh` on sorted vs shuffled (same content, same N) with `rdtscp`.
+3. Explain the gap (predictability / cmov). Print `ok` on checksum.
 
-## Success
-Printed cycle counts for both; sorted usually faster. `ok` on checksum.
+## Done when
 
-## Refs
-exercise 31, exercise 55, `man 1 gcc`
+- Both cycle counts printed; sorted usually faster; checksum `ok`.
+
+## Lookup
+
+exercise 31, exercise 55, `man 1 gcc`.

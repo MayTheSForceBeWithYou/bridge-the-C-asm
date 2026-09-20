@@ -1,24 +1,18 @@
-# 48 — PLT lazy binding (Track E)
+# 48 — PLT lazy binding (practice)
 
-## Goal
-Find the `.plt` stub for `printf` and explain lazy binding from what you see.
+Read `LESSON.md` first. This file is only the lab.
 
-## Do
-1. Keep/adjust `hello.c` so it calls `printf`. Build dynamic `make`.
-2. Inspect:
-```
-objdump -d -j .plt ./hello
-objdump -d ./hello | less
-readelf -r ./hello
-readelf -d ./hello
-```
-3. Locate the `printf@plt` stub. What does it jump through? First call vs
-   later calls (gdb: `break printf`, `run`, `disassemble`, `finish`, call
-   again — optional but illuminating).
-4. Cite `man 5 elf` / `info ld` for the mechanism name (PLT/GOT).
+## Inspect
 
-## Success
-You named the PLT stub address and described lazy binding in your notes.
+1. Hello that calls `printf`; build dynamic (`make`).
+2. `objdump -d -j .plt ./hello`, full disassembly, `readelf -r`, `readelf -d`.
+3. Locate `printf@plt`; note what it jumps through. Optional gdb: first vs later call.
+4. Write a short lazy-binding explanation in your notes.
 
-## Refs
-`man 1 objdump`, `man 1 readelf`, `man 5 elf`, `info ld`, `man 1 gdb`
+## Done when
+
+- You named the PLT stub address and described lazy binding from what you saw.
+
+## Lookup
+
+`man 1 objdump`, `man 1 readelf`, `man 5 elf`, `info ld`, `man 1 gdb`.
