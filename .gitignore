@@ -24,6 +24,9 @@ prog.O2.s
 count
 hello
 prog
+game
+run_tests
+fuzz_parsers
 *_test
 exit_n
 write_n
@@ -57,3 +60,6 @@ o3.txt
 peda-session-*.txt
 *.core
 vgcore.*
+
+# CMake build dirs (exercise 83)
+build/

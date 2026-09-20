@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project(three_binaries C)
+
+# TODO: add_library(gamelib STATIC lib.c)
+# TODO: three add_executable calls linking gamelib
+# TODO: do not list lib.c in each executable's sources

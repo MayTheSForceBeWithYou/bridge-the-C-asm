@@ -47,7 +47,7 @@ CHECK_EQ(fake.draws[0].x, 5);
 CHECK_EQ(fake.draws[0].y, 5);
 ```
 
-On this machine `./prog` prints `9 checks, 0 failed` and exits 0.
+On this machine `./prog` prints `10 checks, 0 failed` and exits 0.
 
 It is tempting to assert only `CHECK_EQ(fake.draw_count, 1)` and call it
 done. That is wrong, because "draw_tile was called once" barely constrains
