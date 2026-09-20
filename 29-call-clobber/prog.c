@@ -1,22 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-
-static void __attribute__((unused)) expect_long(const char *what, long got, long want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %ld want %ld\n", what, got, want);
-        exit(1);
-    }
-}
-
-static void __attribute__((unused)) expect_int(const char *what, int got, int want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %d want %d\n", what, got, want);
-        exit(1);
-    }
-}
+#include "../test/check.h"
 
 int helper(int x, int y)
 {
@@ -27,7 +10,9 @@ int helper(int x, int y)
 
 int main(void)
 {
-    expect_int("helper(20,21)", helper(20, 21), 42);
+    CHECK_EQ(helper(20, 21), 42);
+    if (test_report() != 0)
+        return 1;
     puts("ok");
     return 0;
 }
