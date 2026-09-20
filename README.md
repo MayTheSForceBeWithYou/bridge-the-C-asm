@@ -29,7 +29,14 @@ See `AUTHORING.md` for the content shape (adapted from Otto Didact's authoring g
 6. **Measure, don't guess.** Track F times code with `rdtscp` and ties cycle
    counts back to asm shape.
 7. **No solution keys.** Harnesses print `ok` / exit 0 when behavior is correct.
-   Lessons may interpret artifacts; they do not fill in your TODOs.
+   Lessons may interpret artifacts; they do not fill in your TODOs. Where an
+   exercise ships a reference implementation next to your stub, the stub is a
+   separate translation unit you swap in from the command line — the harness
+   never changes:
+
+   ```bash
+   make clean && make SRCS="prog.c clock.c student_clock.c"
+   ```
 8. **Self-contained dirs.** `make -C <dir>`; jump around when you want.
 
 ## Layout
@@ -40,6 +47,8 @@ bridge-the-C-asm/
   .vscode/launch.json
   PLAN_PROMPT.md EXTENDED_PROMPT.md
   01-hello-pipeline/ ... 75-asm-pie-riprel/
+  00-first-gdb-session/ 76-assert-runner/ ... 83-cmake-three-binaries/
+  test/check.h          # CHECK / CHECK_EQ / CHECK_STR / CHECK_PTR + test_report
 ```
 
 - **Track A (01–20, 29–31):** write C → inspect `.i` / `.s` / `.o` / disassembly.
@@ -52,11 +61,17 @@ bridge-the-C-asm/
 - **Track E (47–54):** ELF, PLT, PIE/ASLR, strip, explicit `ld`, optional linker script.
 - **Track F (55–62):** `rdtscp` timing, opts, autovec, cache, false sharing, capstone.
 - **Track G (63–68):** IEEE bits, memcpy vs union, tags, bitfields, endian, Q16.16.
+- **Track H (76–83):** dependency injection in C — build the assert runner,
+  name the link seam you already shipped, turn it into an ops struct, record
+  draws in a fake, then inject the clock, file I/O, and syscalls. Ends with a
+  build-graph exercise that reproduces a silent link skew and fixes it.
+  `00` opens gdb before Track C.
 
 ## Exercise table
 
 | # | Directory | Track |
 |---|-----------|-------|
+| 00 | `00-first-gdb-session` | C |
 | 01 | `01-hello-pipeline` | A |
 | 02 | `02-prologue-epilogue` | A |
 | 03 | `03-locals-stack` | A |
@@ -132,6 +147,14 @@ bridge-the-C-asm/
 | 73 | `73-asm-cfi-backtrace` | B |
 | 74 | `74-asm-sections-directives` | B |
 | 75 | `75-asm-pie-riprel` | B |
+| 76 | `76-assert-runner` | H |
+| 77 | `77-seam-by-linking` | H |
+| 78 | `78-ops-struct` | H |
+| 79 | `79-fake-renderer` | H |
+| 80 | `80-inject-the-clock` | H |
+| 81 | `81-inject-file-io` | H |
+| 82 | `82-fake-the-syscall` | H |
+| 83 | `83-cmake-three-binaries` | H |
 
 ## How to build
 

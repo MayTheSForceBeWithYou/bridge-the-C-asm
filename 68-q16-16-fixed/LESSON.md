@@ -1,4 +1,5 @@
 # 68 — Q16.16 fixed-point without XMM
+<!-- concepts: c.p5.bits.fixed -->
 
 IEEE floats (exercise 16 / 63) use dedicated FP hardware and XMM registers on this ABI.
 Fixed-point represents fractions with scaled integers — here Q16.16 means 16 fractional

@@ -1,4 +1,5 @@
 # 38 — Breaking after `strip` removes names
+<!-- concepts: c.p5.elf.strip, c.p5.gdb.symbols -->
 
 `strip` deletes symbol and debug baggage the loader does not need to run the
 process. The machine code remains; `nm` goes quiet; named breakpoints like

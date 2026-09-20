@@ -1,4 +1,5 @@
 # 73 — Hand-written CFI so unwinding works
+<!-- concepts: c.p5.asm.cfi -->
 
 Debuggers and `backtrace(3)` do not guess your stack from vibes. They read
 unwind tables — Call Frame Information (CFI) in `.eh_frame` — that describe how

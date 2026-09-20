@@ -1,4 +1,5 @@
 # 59 — Walking memory by cache lines
+<!-- concepts: c.p5.perf.cache -->
 
 Caches move data in *lines*, not bytes. On this machine the L1 data cache line size is
 **64 bytes** (`getconf LEVEL1_DCACHE_LINESIZE` — given, do not rediscover as a puzzle).

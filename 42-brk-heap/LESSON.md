@@ -1,4 +1,5 @@
 # 42 — Growing the program break
+<!-- concepts: c.p2.heap.malloc, c.p5.asm.brk -->
 
 Before anonymous `mmap` dominated allocator designs, Unix heaps grew by moving the
 *program break* — the end of the data segment — with `brk` / `sbrk`. Modern glibc still

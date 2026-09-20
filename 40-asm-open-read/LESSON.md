@@ -1,4 +1,5 @@
 # 40 — Raw open/read/write/close
+<!-- concepts: c.p5.asm.syscall -->
 
 Libc is a convenience layer. Under it, Linux still speaks one language to user code:
 the `syscall` instruction with a number in `%rax` and arguments in the System V

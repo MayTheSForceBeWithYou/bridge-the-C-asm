@@ -1,4 +1,5 @@
 # 18 — `volatile` vs optimization
+<!-- concepts: c.p5.asm.volatile -->
 
 `volatile` tells the compiler that reads and writes to an object have
 side effects it must not invent away — each abstract-machine access should

@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include "../test/check.h"
 
 struct Point {
     int x;
@@ -19,14 +19,6 @@ void fill_demo(struct Point *p, int *arr, int n)
     (void)p; (void)arr; (void)n;
 }
 
-static void expect_int(const char *what, int got, int want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %d want %d\n", what, got, want);
-        exit(1);
-    }
-}
-
 int main(void)
 {
     struct Point pt;
@@ -36,14 +28,13 @@ int main(void)
 
     fill_demo(&pt, arr, 4);
 
-    expect_int("pt.x", pt.x, 0x11);
-    expect_int("pt.y", pt.y, 0x22);
-    expect_int("arr[0]", arr[0], 10);
-    expect_int("arr[3]", arr[3], 40);
-    if (strcmp(pt.tag, "ABC") != 0) {
-        fprintf(stderr, "FAIL tag: '%s'\n", pt.tag);
-        exit(1);
-    }
+    CHECK_EQ(pt.x, 0x11);
+    CHECK_EQ(pt.y, 0x22);
+    CHECK_EQ(arr[0], 10);
+    CHECK_EQ(arr[3], 40);
+    CHECK_STR(pt.tag, "ABC");
+    if (test_report() != 0)
+        return 1;
     puts("ok");
     return 0;
 }

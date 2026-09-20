@@ -1,4 +1,5 @@
 # 60 — False sharing between threads
+<!-- concepts: c.p5.perf.sharing -->
 
 Two threads writing *different* variables can still thrash if those variables share a
 cache line. Coherence traffic bounces the line between cores — *false* sharing, because

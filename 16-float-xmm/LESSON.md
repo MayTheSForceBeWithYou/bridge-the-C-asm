@@ -1,4 +1,5 @@
 # 16 — Float / double in xmm*
+<!-- concepts: c.p5.abi.xmm -->
 
 Integer arguments used general-purpose registers (lesson 04). Floating-point
 arguments and results on SysV AMD64 use the SSE registers `%xmm0`, `%xmm1`, … for

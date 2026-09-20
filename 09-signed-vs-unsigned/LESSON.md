@@ -1,4 +1,5 @@
 # 09 — Signed vs unsigned compares
+<!-- concepts: c.p2.types.width, c.p2.types.overflow -->
 
 The `cmp` instruction subtracts without writing the destination and sets CPU
 flags. What *differs* for signed versus unsigned C types is which conditional

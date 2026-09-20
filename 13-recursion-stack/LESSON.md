@@ -1,4 +1,5 @@
 # 13 — Recursion and stack growth
+<!-- concepts: c.p2.stack.recursion, c.p2.stack.frame -->
 
 Each active function call owns a *stack frame*: return address, saved registers
 (often `%rbp`), and locals. Recursion makes that concrete — `fac(n)` calling

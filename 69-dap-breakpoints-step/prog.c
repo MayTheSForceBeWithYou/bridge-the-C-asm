@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "../test/check.h"
 
 /* Tiny program for nvim-dap breakpoint / step practice.
  * Fill classify so the harness expectations hold; then debug it. */
@@ -22,20 +22,14 @@ int accum(int n)
     return 0;
 }
 
-static void expect_int(const char *what, int got, int want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %d want %d\n", what, got, want);
-        exit(1);
-    }
-}
-
 int main(void)
 {
-    expect_int("classify(-3)", classify(-3), -1);
-    expect_int("classify(0)", classify(0), 0);
-    expect_int("classify(7)", classify(7), 1);
-    expect_int("accum(5)", accum(5), 10);
+    CHECK_EQ(classify(-3), -1);
+    CHECK_EQ(classify(0), 0);
+    CHECK_EQ(classify(7), 1);
+    CHECK_EQ(accum(5), 10);
+    if (test_report() != 0)
+        return 1;
     puts("ok");
     return 0;
 }

@@ -1,4 +1,5 @@
 # 46 — Freestanding wordcount stretch
+<!-- concepts: c.p2.heap.arena, c.p5.asm.start -->
 
 This stretch combines Track D skills: parse argv, open/read a file, use mmap or BSS as
 a buffer, count newlines, and print a decimal integer — all without libc. It is a

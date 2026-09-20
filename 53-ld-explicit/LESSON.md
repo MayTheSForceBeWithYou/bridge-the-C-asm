@@ -1,4 +1,5 @@
 # 53 — Linking with an explicit `ld` line
+<!-- concepts: c.p5.elf.ld -->
 
 The `gcc` driver hides a lot of linker flags. For freestanding programs you often
 invoke `ld` yourself — and every flag should be a choice you can defend. This lesson

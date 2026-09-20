@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.16)
+project(three_binaries C)
+
+# Rebuild the graph yourself, then check your work against CMakeLists.txt.
+#
+# TODO: one add_library(gamelib STATIC ...) holding the shared modules.
+# TODO: three add_executable() calls, each naming only its own entry point.
+# TODO: target_link_libraries(... PRIVATE gamelib) for each.
+#
+# The constraint that matters: a shared .c appears exactly once in this
+# file. If you find yourself listing combat.c three times, you have
+# rewritten the Makefile's bug in CMake syntax.

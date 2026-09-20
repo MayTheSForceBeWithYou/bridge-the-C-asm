@@ -1,4 +1,5 @@
 # 43 — Catching SIGSEGV with sigaction
+<!-- concepts: c.p5.os.sigsegv -->
 
 A null dereference is not "C undefined behavior happening in the abstract" — on Linux
 it is a hardware fault delivered as the signal `SIGSEGV`. You can install a handler with

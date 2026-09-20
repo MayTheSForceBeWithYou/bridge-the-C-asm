@@ -1,4 +1,5 @@
 # 69 — nvim-dap keys on a tiny C program
+<!-- concepts: c.p5.dap.break -->
 
 Earlier Track C labs mixed gdb and dap while chasing ABI and memory questions.
 This drill isolates the **editor keys** themselves on a small `classify` /

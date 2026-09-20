@@ -1,4 +1,5 @@
 # 07 — Arrays vs pointers
+<!-- concepts: c.p2.arrays.contiguous, c.p2.pointers.addressof, c.p2.pointers.arithmetic -->
 
 In C source, `a[i]` and `*(p + i)` are closely related, and for a parameter
 declared `const int *a` the "array" vs "pointer" spellings in a loop are often

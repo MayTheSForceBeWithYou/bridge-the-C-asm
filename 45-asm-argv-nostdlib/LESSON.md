@@ -1,4 +1,5 @@
 # 45 — Reading argv from the initial stack
+<!-- concepts: c.p5.abi.argv, c.p5.asm.start -->
 
 When the kernel enters your freestanding `_start`, `%rsp` already points at a defined
 layout: argument count, then pointers to argument strings, then a NULL, then environment

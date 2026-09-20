@@ -1,4 +1,5 @@
 # 41 — Anonymous mmap from assembly
+<!-- concepts: c.p5.asm.mmap -->
 
 Heap-like memory does not require `malloc`. The kernel can map a fresh page into your
 address space with `mmap`, and take it back with `munmap`. This lesson shows the raw

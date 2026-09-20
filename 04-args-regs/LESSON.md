@@ -1,4 +1,5 @@
 # 04 — Argument registers
+<!-- concepts: c.p2.stack.byvalue, c.p5.abi.argregs -->
 
 When one C function calls another, arguments have to live somewhere the callee
 can find them. On x86-64 System V AMD64 (GNU/Linux), the first six *integer /

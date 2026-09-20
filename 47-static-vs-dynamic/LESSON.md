@@ -1,4 +1,5 @@
 # 47 — Static versus dynamic linking
+<!-- concepts: c.p5.elf.dynamic -->
 
 The same `hello.c` can become a small binary that needs `libc.so` at runtime, or a
 large binary that carries its own copy of library code. Those choices show up in

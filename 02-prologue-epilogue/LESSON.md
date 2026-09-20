@@ -1,4 +1,5 @@
 # 02 — Prologue / epilogue
+<!-- concepts: c.p2.stack.frame, c.p5.asm.prologue -->
 
 Every C function you write becomes a labeled region of machine code with an entry
 and an exit. At `-O0`, GCC almost always wraps that region in a *prologue* that

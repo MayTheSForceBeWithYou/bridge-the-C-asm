@@ -1,4 +1,5 @@
 # 27 — Calling C from assembly
+<!-- concepts: c.p5.abi.call, c.p5.asm.function -->
 
 So far C called your asm. The other direction matters just as much: your asm
 sets up arguments, aligns the stack, `call`s a C function, and treats `%rax` as

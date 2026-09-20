@@ -1,4 +1,5 @@
 # 64 — memcpy type pun versus union
+<!-- concepts: c.p5.bits.pun -->
 
 Exercise 63 used a union to view a `float`'s bits. The C standard's friendly portable
 pattern for reinterpreting object representation is often `memcpy` into an integer of

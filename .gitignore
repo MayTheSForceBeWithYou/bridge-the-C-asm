@@ -21,8 +21,14 @@ prog.O0.s
 prog.O2.s
 
 # Linked exercise binaries (NAME in each exercise Makefile)
+count
 hello
 prog
+my_prog
+prog.asan
+game
+run_tests
+fuzz_parsers
 *_test
 exit_n
 write_n
@@ -56,3 +62,6 @@ o3.txt
 peda-session-*.txt
 *.core
 vgcore.*
+
+# CMake build dirs (exercise 83)
+build/

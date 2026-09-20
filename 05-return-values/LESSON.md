@@ -1,4 +1,5 @@
 # 05 — Return values
+<!-- concepts: c.p5.abi.retval -->
 
 Arguments enter a function through a convention; return values leave through one
 too. For ordinary `int` and `long` results on SysV AMD64, the callee places the

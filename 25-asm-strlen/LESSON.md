@@ -1,4 +1,5 @@
 # 25 — Walking bytes until NUL
+<!-- concepts: c.p2.strings.nul, c.p5.asm.loop -->
 
 A C string is a pointer to bytes terminated by `\0`. Computing its length is a
 pointer walk: load a byte, test for zero, advance, count. This lesson has you

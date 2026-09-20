@@ -1,4 +1,5 @@
 # 10 — Switch: jump table vs compares
+<!-- concepts: c.p5.asm.jumptable -->
 
 A `switch` is not one machine instruction. GCC lowers it to either a *cascade of
 compares* or a *jump table* (an array of addresses in `.rodata`, indexed by the

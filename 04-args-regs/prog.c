@@ -1,22 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-
-static void __attribute__((unused)) expect_long(const char *what, long got, long want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %ld want %ld\n", what, got, want);
-        exit(1);
-    }
-}
-
-static void __attribute__((unused)) expect_int(const char *what, int got, int want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %d want %d\n", what, got, want);
-        exit(1);
-    }
-}
+#include "../test/check.h"
 
 long f1(long a);
 long f2(long a, long b);
@@ -54,10 +37,12 @@ long f7(long a, long b, long c, long d, long e, long f, long g)
 int main(void)
 {
     /* Sums: f1(1)=1, f2(1,2)=3, f6(1..6)=21, f7(1..7)=28 */
-    expect_long("f1", f1(1), 1);
-    expect_long("f2", f2(1, 2), 3);
-    expect_long("f6", f6(1, 2, 3, 4, 5, 6), 21);
-    expect_long("f7", f7(1, 2, 3, 4, 5, 6, 7), 28);
+    CHECK_EQ(f1(1), 1);
+    CHECK_EQ(f2(1, 2), 3);
+    CHECK_EQ(f6(1, 2, 3, 4, 5, 6), 21);
+    CHECK_EQ(f7(1, 2, 3, 4, 5, 6, 7), 28);
+    if (test_report() != 0)
+        return 1;
     puts("ok");
     return 0;
 }

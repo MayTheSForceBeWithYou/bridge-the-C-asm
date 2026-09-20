@@ -1,4 +1,5 @@
 # 14 — Tail-call optimization?
+<!-- concepts: c.p5.asm.tailcall -->
 
 A call is in *tail position* when the caller immediately returns its result —
 nothing remains to do after the callee comes back. Compilers may turn such a

@@ -1,4 +1,5 @@
 # 15 — Function pointers
+<!-- concepts: c.p4.fnptr.call -->
 
 A function pointer holds the address of executable code. Calling through it is an
 *indirect* call: the target is in a register (or memory) rather than hard-wired

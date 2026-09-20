@@ -1,4 +1,5 @@
 # 74 — Sections and symbols by hand
+<!-- concepts: c.p5.elf.sections -->
 
 Compilers sprinkle literals into `.rodata`, mutable globals into `.data`, and
 zeroed storage into `.bss`. Exercise 11 read that layout out of `gcc` output;

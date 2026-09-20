@@ -1,22 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-
-static void __attribute__((unused)) expect_long(const char *what, long got, long want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %ld want %ld\n", what, got, want);
-        exit(1);
-    }
-}
-
-static void __attribute__((unused)) expect_int(const char *what, int got, int want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %d want %d\n", what, got, want);
-        exit(1);
-    }
-}
+#include "../test/check.h"
 
 long add2_c(long a, long b)
 {
@@ -36,8 +19,10 @@ long add2_asm(long a, long b)
 
 int main(void)
 {
-    expect_long("add2_c", add2_c(20, 22), 42);
-    expect_long("add2_asm", add2_asm(20, 22), 42);
+    CHECK_EQ(add2_c(20, 22), 42);
+    CHECK_EQ(add2_asm(20, 22), 42);
+    if (test_report() != 0)
+        return 1;
     puts("ok");
     return 0;
 }

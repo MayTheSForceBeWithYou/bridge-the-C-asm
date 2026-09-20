@@ -1,4 +1,5 @@
 # 06 — Struct layout / padding
+<!-- concepts: c.p2.memory.sizeof, c.p5.abi.layout -->
 
 A C struct is a ordered bag of fields with alignment rules that insert *padding*
 bytes you never name in source. Those bytes still show up as gaps between load

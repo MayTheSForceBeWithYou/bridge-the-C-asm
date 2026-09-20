@@ -1,4 +1,5 @@
 # 49 — PIE, EXEC, and ASLR bases
+<!-- concepts: c.p5.elf.pie -->
 
 Modern GCC defaults to position-independent executables (PIE). In `readelf -h`, that
 often shows as `Type: DYN` — the same ELF type family as shared objects — whereas

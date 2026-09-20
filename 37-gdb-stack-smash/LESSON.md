@@ -1,4 +1,5 @@
 # 37 — Reading a smashed return address
+<!-- concepts: c.p2.arrays.bounds, c.p2.overflow.adjacent, c.p2.stack.frame -->
 
 A small automatic buffer like `char buf[8]` sits on the stack near the saved
 frame pointer and return address. If you deliberately write past its end (this

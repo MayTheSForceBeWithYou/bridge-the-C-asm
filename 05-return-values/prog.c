@@ -1,22 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-
-static void __attribute__((unused)) expect_long(const char *what, long got, long want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %ld want %ld\n", what, got, want);
-        exit(1);
-    }
-}
-
-static void __attribute__((unused)) expect_int(const char *what, int got, int want)
-{
-    if (got != want) {
-        fprintf(stderr, "FAIL %s: got %d want %d\n", what, got, want);
-        exit(1);
-    }
-}
+#include "../test/check.h"
 
 struct Pair {
     int x;
@@ -47,11 +30,13 @@ struct Pair ret_pair(void)
 int main(void)
 {
     /* Contract: ret_int->42, ret_long->100, Pair{3,4} */
-    expect_int("ret_int", ret_int(), 42);
-    expect_long("ret_long", ret_long(), 100);
+    CHECK_EQ(ret_int(), 42);
+    CHECK_EQ(ret_long(), 100);
     struct Pair p = ret_pair();
-    expect_int("pair.x", p.x, 3);
-    expect_int("pair.y", p.y, 4);
+    CHECK_EQ(p.x, 3);
+    CHECK_EQ(p.y, 4);
+    if (test_report() != 0)
+        return 1;
     puts("ok");
     return 0;
 }

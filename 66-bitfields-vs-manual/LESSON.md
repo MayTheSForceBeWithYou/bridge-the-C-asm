@@ -1,4 +1,5 @@
 # 66 — C bitfields versus shift/mask packing
+<!-- concepts: c.p5.bits.fields -->
 
 C bitfields let you declare members like `unsigned x : 5`. The compiler chooses layout
 details (allocation unit, order) in implementation-defined ways. Manual packing with

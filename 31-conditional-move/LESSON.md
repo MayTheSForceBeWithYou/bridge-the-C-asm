@@ -1,4 +1,5 @@
 # 31 — Conditional move
+<!-- concepts: c.p5.asm.cmov -->
 
 A branch implements `if` by jumping. A *conditional move* (`cmov*`) implements
 some choices by moving data only when flags say so — control flow falls through

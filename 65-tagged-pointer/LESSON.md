@@ -1,4 +1,5 @@
 # 65 — Stashing tags in aligned pointers
+<!-- concepts: c.p5.bits.tag -->
 
 Heap pointers from `malloc` on this ABI are aligned to at least 8 bytes (often more).
 The low 3 bits of such a pointer are therefore zero and can store a small *tag* — a

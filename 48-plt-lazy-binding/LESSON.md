@@ -1,4 +1,5 @@
 # 48 — PLT stubs and lazy binding
+<!-- concepts: c.p5.elf.plt -->
 
 When a dynamic binary calls `printf`, the call instruction usually targets a stub in
 the Procedure Linkage Table (PLT), not the final libc address. The first call asks the

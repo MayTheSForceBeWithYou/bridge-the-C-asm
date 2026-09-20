@@ -1,4 +1,5 @@
 # 35 — `%rsp` after `call` and each `push`
+<!-- concepts: c.p2.stack.frame, c.p5.gdb.stack -->
 
 A `call` does two things you can see with a debugger: it pushes an 8-byte return
 address, then transfers control. Each later `push` of a callee-saved register

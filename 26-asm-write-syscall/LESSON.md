@@ -1,4 +1,5 @@
 # 26 — `write` through a raw syscall
+<!-- concepts: c.p5.asm.syscall -->
 
 Printing without libc means asking the kernel to copy bytes to a file
 descriptor. The `write` syscall uses the same register contract as `exit`, with

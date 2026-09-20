@@ -1,4 +1,5 @@
 # 20 — Packed vs aligned structs
+<!-- concepts: c.p2.memory.sizeof, c.p5.abi.align -->
 
 Natural layout inserts padding so each field sits on its preferred alignment
 (lesson 06). `__attribute__((packed))` asks GCC to drop that padding, packing
