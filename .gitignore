@@ -21,6 +21,7 @@ prog.O0.s
 prog.O2.s
 
 # Linked exercise binaries (NAME in each exercise Makefile)
+count
 hello
 prog
 *_test
