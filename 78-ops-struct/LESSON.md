@@ -46,20 +46,32 @@ record. `draw_scene(const struct RenderOps *ops, ...)` never names a leaf
 clear
 draw_tile 3 4 2
 present
+
+10 checks, 0 failed
 ok
 ```
 
-`main` stacks a `struct RenderOps`, `render_print_ops` fills it, `draw_scene`
-calls through it. No ncurses, no SDL — and the call sites in `draw_scene`
-would look identical if `ops` pointed at a fake.
+Two leaves ran there, not one. `main` stacks a `struct RenderOps`,
+`render_print_ops` fills it with the printing functions, and `draw_scene`
+calls through it — that is the trace at the top. Then `main` stacks a
+*second* struct whose three fields point at counting functions defined in the
+harness itself, and calls the same `draw_scene` again. The checks assert what
+that second run recorded: three calls, in the order clear, draw_tile,
+present, with the coordinates `draw_scene` was handed.
+
+Read that arrangement carefully, because it is the point of the whole
+exercise. A printing leaf and a recording leaf are alive in one process at
+the same time, and `draw_scene` — one function, compiled once — served both
+without knowing either existed. No ncurses, no SDL, no second binary.
 
 It is tempting to read this struct as "always better than a link seam."
 That is wrong, because for a shipped game you still want one leaf, one
-binary, and the simpler global `render_draw_tile` API. The struct buys you
-**two implementations in the same process at the same time**, which is what
-a test needs. Prefer the link seam for shipping; prefer the struct when a
-test must substitute a leaf without forking a second binary's worth of
-link graph.
+binary, and the simpler global `render_draw_tile` API — no indirection to
+chase in a debugger, no pointer to check, one less thing between the call
+and the pixel. The struct buys you exactly one thing: **two implementations
+in the same process at the same time**, which is what a test needs and a
+shipped game does not. Prefer the link seam for shipping; prefer the struct
+when a test must substitute a leaf without building a second binary.
 
 ## Distinctions worth keeping straight
 
@@ -69,7 +81,9 @@ link graph.
 - **Function pointer field vs `BACKEND=`.** Runtime choice versus build-time
   choice.
 - **`student_ops.c` vs `render_ops.c`.** Your rewrite versus the linked
-  reference — same shape.
+  reference — same shape, same harness judging both.
+- **A trace you read vs a check that fails.** The printed lines are for you;
+  the counting leaf is what makes the build go red.
 
 ## Check yourself
 
@@ -77,7 +91,8 @@ link graph.
 2. Why keep the link seam for the shipped game at all?
 3. Who chooses the leaf when the parameter is `const struct RenderOps *`?
 4. Name the three fields in this lesson's `RenderOps`.
-5. Does `draw_scene` know whether it is printing or recording?
+5. Does `draw_scene` know whether it is printing or recording? What in its
+   signature guarantees that?
 
 ## Key takeaways
 

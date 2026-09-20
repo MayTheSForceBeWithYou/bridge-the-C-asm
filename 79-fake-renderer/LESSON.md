@@ -16,7 +16,8 @@ not "draw was called"; it is "walking into a wall draws the player at the
 
 ## Why this was missing in your corpus
 
-`ch32/Makefile`'s `TEST_SOURCES` lists pure modules and **no** renderer.
+`~/dev/c/LearnCwithRPG-graphics/code/ch32/Makefile`'s `TEST_SOURCES`
+lists eighteen pure modules and **no** renderer.
 That is a real, common, defensible choice: unit-test combat math without a
 window. It is also exactly why the draw boundary has never been tested. The
 link seam gave you substitution for shipping; the tests stepped around the
@@ -85,6 +86,7 @@ passes a call-count check. The coordinates are the actual claim.
 
 - `../test/check.h`
 - Lesson 78 — ops struct
-- Your `ch32/Makefile` `TEST_SOURCES` line
+- `~/dev/c/LearnCwithRPG-graphics/code/ch32/Makefile` — the
+  `TEST_SOURCES` line
 
 Now open `TASK.md` and do the practice.
