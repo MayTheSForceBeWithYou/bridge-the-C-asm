@@ -16,8 +16,19 @@ Read `LESSON.md` first. This file is only the lab.
 
    Expect differences: the harvested file also has `CHECK_STR` and
    `CHECK_PTR`. Your shape for `CHECK` / `CHECK_EQ` should be recognizable.
-4. Optional: point a throwaway `main` at `my_check.h` and prove a failing
-   check exits non-zero. Do not change `prog.c` for that experiment.
+4. Prove your header independently. Write `my_prog.c` with a `main` that
+   includes `my_check.h`, runs one passing and one failing check, and
+   returns `test_report()`. Build and run it:
+
+   ```bash
+   gcc -Wall -Wextra -g -o my_prog my_prog.c && ./my_prog; echo $?
+   ```
+
+   You want a FAIL line naming `my_prog.c` and exit 1. Leave `prog.c` alone.
+5. Make one check pass that should not: write `CHECK_EQ` so it compares with
+   `=` instead of `==`, or forget to increment `tests_failed`. Confirm the
+   runner now reports success on a broken claim. That is the failure mode a
+   test framework has and your code does not.
 
 ## Done when
 

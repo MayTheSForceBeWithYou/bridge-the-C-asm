@@ -99,10 +99,12 @@ do not depend on that). Two `next`s put you on the first `total += i` with
 exited normally.
 
 It is tempting to read `info locals` at the first stop as "the initializer
-already ran." That is wrong, because the breakpoint on `main` lands on the
-opening brace line of the first statement — you are stopped *at* the
-initializer, not after it. Always `print` again after `next` if the claim you
-care about is "this assignment happened."
+already ran." That is wrong, because `break main` skips the function prologue
+and plants the stop on the first *statement* line — here line 5, the
+initializer itself. You are stopped at that line, about to execute it, not
+after it. The `total = 0` you see is uninitialized stack that happens to read
+as zero, which is exactly why it fools people. Always `print` again after
+`next` when the claim you care about is "this assignment happened."
 
 ## Distinctions worth keeping straight
 

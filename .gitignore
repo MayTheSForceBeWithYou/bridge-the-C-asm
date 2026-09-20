@@ -24,6 +24,8 @@ prog.O2.s
 count
 hello
 prog
+my_prog
+prog.asan
 game
 run_tests
 fuzz_parsers

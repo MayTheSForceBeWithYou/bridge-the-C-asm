@@ -28,11 +28,11 @@ Strip the ceremony. A unit test does three things:
 3. Remember whether that comparison failed.
 
 Everything else — pretty names, fixtures, parallel runners — is
-packaging. The learner's own RPG already ships a header that does
-exactly those three things in about twenty lines. Apex hid the same
-three behind a runner you never opened. That hiding is the thing being
-demystified here: once you can write the macros, the IDE green bar is
-just a UI over an exit status.
+packaging. Your own RPG already ships a header that does exactly those
+three things in about twenty lines. Apex hid the same three behind a
+runner you never opened. That hiding is the thing being demystified
+here: once you can write the macros, the IDE green bar is just a UI
+over an exit status.
 
 ## Why `__FILE__` and `__LINE__` are preprocessor facts
 
