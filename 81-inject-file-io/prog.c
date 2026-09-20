@@ -17,5 +17,10 @@ int main(void)
     file_fake_set("no_pairs_here\n");
     CHECK_EQ(parse_config_count(&fake, "ignored.ini"), 0);
 
+    /* A failing read is a leaf behavior the real one would need a missing
+       file to produce. The fake just plants NULL. */
+    file_fake_set(NULL);
+    CHECK_EQ(parse_config_count(&fake, "ignored.ini"), -1);
+
     return test_report();
 }

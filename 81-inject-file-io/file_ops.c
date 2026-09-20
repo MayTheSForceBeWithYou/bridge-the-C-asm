@@ -46,26 +46,3 @@ char *file_fake_read_all(const char *path)
     }
     return strdup(g_fake_text);
 }
-
-int parse_config_count(const struct FileOps *io, const char *path)
-{
-    char *text = io->read_all(path);
-    if (text == NULL) {
-        return -1;
-    }
-
-    int count = 0;
-    char *save = NULL;
-    for (char *line = strtok_r(text, "\n", &save); line != NULL;
-         line = strtok_r(NULL, "\n", &save)) {
-        if (line[0] == '#' || line[0] == '\0') {
-            continue;
-        }
-        if (strchr(line, '=') != NULL) {
-            count++;
-        }
-    }
-
-    free(text);
-    return count;
-}
