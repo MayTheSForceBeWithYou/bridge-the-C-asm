@@ -1,4 +1,5 @@
 # 72 — `main` in asm, linked with libc
+<!-- concepts: c.p5.asm.main, c.p5.abi.call -->
 
 Freestanding `_start` programs talk to the kernel. Most real programs still
 want libc: `puts`, `printf`, heap, and a civilized exit. This lesson has you

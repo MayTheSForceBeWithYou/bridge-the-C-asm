@@ -1,4 +1,5 @@
 # 32 — Live args in registers
+<!-- concepts: c.p5.abi.argregs, c.p5.gdb.regs -->
 
 Track A taught you that on System V AMD64 the first integer or pointer argument
 lands in `%rdi` and the second in `%rsi`. That was a static claim about a calling

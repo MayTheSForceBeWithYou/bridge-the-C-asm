@@ -1,4 +1,5 @@
 # 21 — `_start` and the exit syscall
+<!-- concepts: c.p5.asm.syscall, c.p5.asm.start -->
 
 When there is no C runtime, nothing calls `main` and nothing turns `return 0`
 into a process exit. The kernel only understands syscalls: a number in `%rax`,

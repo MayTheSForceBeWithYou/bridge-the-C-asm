@@ -1,4 +1,5 @@
 # 54 — Optional: a custom linker script section
+<!-- concepts: c.p5.elf.script -->
 
 Linker scripts tell `ld` how to map input sections into the output ELF — addresses,
 order, and which segments exist. This optional stretch has you keep a custom

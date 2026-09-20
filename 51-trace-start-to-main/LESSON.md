@@ -1,4 +1,5 @@
 # 51 — From `_start` to `main`
+<!-- concepts: c.p5.elf.crt, c.p5.asm.start -->
 
 Your C program does not begin at `main`. The ELF entry is `_start` (often from
 `crt1.o`), which eventually calls into libc startup — commonly `__libc_start_main` —

@@ -1,4 +1,5 @@
 # 17 — Linked list pointer chasing
+<!-- concepts: c.p2.pointers.deref -->
 
 A linked list turns field offsets and pointer loads into a loop: load `val`, load
 `next`, then chase `next` until you see NULL. In assembly that is a small machine

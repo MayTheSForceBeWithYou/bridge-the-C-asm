@@ -1,4 +1,5 @@
 # 33 — Live ABI in hand-written asm
+<!-- concepts: c.p5.gdb.stepi, c.p5.abi.argregs -->
 
 You already wrote (or will write) `add3` in assembly: three `long` arguments in
 `%rdi`/`%rsi`/`%rdx`, sum in `%rax`. Compiling the harness proves the contract

@@ -1,4 +1,5 @@
 # 08 — Loop jump shapes
+<!-- concepts: c.p5.asm.jumps -->
 
 `for`, `while`, and `do`/`while` are C control-structure sugar over tests and
 jumps. In assembly you see labels, conditional jumps (`jcc`), and sometimes an

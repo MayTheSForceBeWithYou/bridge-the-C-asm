@@ -1,4 +1,5 @@
 # 75 — RIP-relative addressing in a PIE
+<!-- concepts: c.p5.elf.pie, c.p5.asm.riprel -->
 
 Position-Independent Executables (PIEs) load at a randomized base. Absolute
 immediate addresses baked into instructions cannot be patched cheaply for every

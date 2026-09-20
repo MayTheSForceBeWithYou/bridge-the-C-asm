@@ -1,4 +1,5 @@
 # 44 — Bump allocation without malloc
+<!-- concepts: c.p2.heap.arena, c.p2.heap.bounds -->
 
 A bump (arena) allocator is the simplest real allocator: map one big region, hand out
 consecutive slices by advancing a pointer, and free everything at once by discarding the

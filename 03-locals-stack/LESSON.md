@@ -1,4 +1,5 @@
 # 03 — Locals on the stack
+<!-- concepts: c.p2.memory.variable, c.p2.stack.frame -->
 
 C local variables are names in your source. In unoptimized x86-64 code they are
 usually *slots* at negative offsets from `%rbp`. Optimized code may keep the same

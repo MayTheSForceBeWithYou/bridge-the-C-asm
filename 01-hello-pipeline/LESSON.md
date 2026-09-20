@@ -1,4 +1,5 @@
 # 01 — Hello pipeline
+<!-- concepts: c.p1.pipeline.stages, c.p1.elf.object -->
 
 A C source file is not what the CPU runs. Between `hello.c` and a running process sits a
 pipeline of real artifacts — preprocessed text, assembly, an object file, and a linked

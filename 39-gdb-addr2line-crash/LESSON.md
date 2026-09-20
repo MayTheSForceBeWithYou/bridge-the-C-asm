@@ -1,4 +1,5 @@
 # 39 — From faulting address to source line
+<!-- concepts: c.p5.elf.addrline -->
 
 When a process dies on a bad dereference, the useful artifact is often a
 hexadecimal address in `%rip` / a backtrace frame — not a polite C diagnostic.

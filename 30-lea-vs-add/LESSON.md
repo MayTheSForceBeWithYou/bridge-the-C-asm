@@ -1,4 +1,5 @@
 # 30 — LEA vs ADD
+<!-- concepts: c.p5.asm.lea -->
 
 `lea` (load effective address) computes an address-like arithmetic expression
 and writes the result to a register *without* accessing memory. On x86-64 it is

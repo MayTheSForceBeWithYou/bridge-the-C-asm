@@ -1,4 +1,5 @@
 # 71 — Step from harness into your `.s`
+<!-- concepts: c.p5.dap.stepi -->
 
 Lesson 33 practiced live ABI on `add3`. This dap drill repeats the multi-file
 pattern with a fresh stub (`twiddle`: return `(a ^ b) + c`) and emphasizes the

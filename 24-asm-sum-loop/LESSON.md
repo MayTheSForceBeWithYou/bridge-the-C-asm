@@ -1,4 +1,5 @@
 # 24 — Summing with labels and conditional jumps
+<!-- concepts: c.p5.asm.jumps, c.p5.asm.loop -->
 
 C `for` and `while` are illusions over compare-and-branch. In assembly you name
 labels, subtract or compare, and jump — or you fall through. This lesson builds

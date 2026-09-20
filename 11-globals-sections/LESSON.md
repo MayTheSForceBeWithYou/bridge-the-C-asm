@@ -1,4 +1,5 @@
 # 11 — Globals and sections
+<!-- concepts: c.p5.elf.sections -->
 
 Globals and statics are not stack slots. They are symbols living in ELF
 *sections*: typically `.data` for initialized mutable data, `.bss` for zero /

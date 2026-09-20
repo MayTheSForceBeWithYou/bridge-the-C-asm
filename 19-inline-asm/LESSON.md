@@ -1,4 +1,5 @@
 # 19 — Inline asm bridge
+<!-- concepts: c.p5.asm.inline -->
 
 Extended Asm lets you drop a few assembler instructions inside C while still
 letting GCC allocate registers and keep the surrounding function ABI-correct.

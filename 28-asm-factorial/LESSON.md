@@ -1,4 +1,5 @@
 # 28 — Recursive factorial in pure asm
+<!-- concepts: c.p2.stack.recursion, c.p5.asm.function -->
 
 Recursion is a calling convention stress test: each invocation needs its own
 saved state, a correct base case, and a `call` that comes back. This stretch

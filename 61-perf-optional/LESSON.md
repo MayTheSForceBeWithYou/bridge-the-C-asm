@@ -1,4 +1,5 @@
 # 61 — Optional hardware counters with perf
+<!-- concepts: c.p5.perf.counters -->
 
 `rdtscp` counts cycles from inside the process. `perf stat` (when installed) samples
 CPU performance counters from the outside — cycles, instructions, branches,

@@ -1,4 +1,5 @@
 # 22 — Hand-written `add3` under the C ABI
+<!-- concepts: c.p5.abi.argregs, c.p5.asm.function -->
 
 C and assembly meet at a calling convention: where arguments land, where the
 return value must appear, and which registers you may freely overwrite. This

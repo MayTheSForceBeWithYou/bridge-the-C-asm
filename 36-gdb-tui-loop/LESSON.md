@@ -1,4 +1,5 @@
 # 36 — Watching a loop accumulate
+<!-- concepts: c.p5.gdb.tui, c.p5.asm.loop -->
 
 A loop is where register state changes on every iteration while the *source*
 looks like the same three lines. Debuggers earn their keep when you can watch

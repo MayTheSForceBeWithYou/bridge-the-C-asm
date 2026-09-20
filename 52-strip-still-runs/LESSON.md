@@ -1,4 +1,5 @@
 # 52 — Stripping symbols from a running binary
+<!-- concepts: c.p5.elf.strip -->
 
 `strip` removes symbol table and debug-related sections that humans and debuggers love
 — but the machine code and the information the loader needs can remain. A stripped copy

@@ -1,4 +1,5 @@
 # 62 — Beat the compiler's -O2 of a naive loop
+<!-- concepts: c.p5.opt.handtune -->
 
 Sometimes the compiler's best effort on *bad* source still loses to a human who changes
 the algorithm: branchless form, blocking for cache, precomputation, different data

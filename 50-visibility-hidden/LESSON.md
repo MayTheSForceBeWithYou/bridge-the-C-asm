@@ -1,4 +1,5 @@
 # 50 — Default visibility versus hidden
+<!-- concepts: c.p5.elf.visibility -->
 
 ELF symbols can be exported for dynamic linking or hidden from the dynamic symbol
 table. GCC's `-fvisibility=hidden` changes the default so only explicitly default-visible

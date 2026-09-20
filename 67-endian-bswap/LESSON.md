@@ -1,4 +1,5 @@
 # 67 — Little-endian bytes and bswap
+<!-- concepts: c.p5.bits.endian -->
 
 x86-64 is little-endian: the least significant byte of an integer sits at the lowest
 address. Walking a `uint32_t` via `unsigned char *` shows that order. Byte-swapping

@@ -1,4 +1,5 @@
 # 23 — Stack scratch and 16-byte alignment
+<!-- concepts: c.p5.abi.align, c.p2.stack.frame -->
 
 Registers are not enough once you need memory the caller cannot see. Locals live
 in a stack frame you carve from `%rsp`, and the ABI demands that `%rsp` be

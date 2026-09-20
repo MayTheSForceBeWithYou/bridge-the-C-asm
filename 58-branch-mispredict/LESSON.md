@@ -1,4 +1,5 @@
 # 58 — When sorted data makes branches cheap
+<!-- concepts: c.p5.perf.branch -->
 
 A loop that branches on `a[i] > threshold` behaves differently on sorted versus
 shuffled data even when the *element multiset* is identical. CPUs predict branches;

@@ -1,4 +1,5 @@
 # 12 — String literals in `.rodata`
+<!-- concepts: c.p2.strings.nul, c.p5.elf.rodata -->
 
 A string literal in C source is typically an array of `char` bytes living in
 read-only data, referenced by address from code. Identical literals may be

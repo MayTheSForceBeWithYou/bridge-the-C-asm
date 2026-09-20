@@ -1,4 +1,5 @@
 # 57 — Autovectorization and the aliasing hazard
+<!-- concepts: c.p5.opt.autovec -->
 
 GCC at `-O3 -march=native` can emit packed SIMD operations for simple array loops —
 when it can prove (or is told) that pointers do not alias in dangerous ways. `restrict`

@@ -1,4 +1,5 @@
 # 34 — Why `watch` dies at `-O2`
+<!-- concepts: c.p5.gdb.watch -->
 
 A data watchpoint says: "stop when *this memory location* changes." At `-O0`,
 a local like `x` in `bump` usually lives in a stack slot, so `watch x` has an

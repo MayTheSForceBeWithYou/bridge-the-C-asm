@@ -1,4 +1,5 @@
 # 70 — Bytes behind a struct and array
+<!-- concepts: c.p2.memory.variable, c.p5.dap.memory -->
 
 Scopes will happily show `pt.x == 0x11`. Memory view shows *why*: little-endian
 `11 00 00 00` at `&pt`, then `y`, then the ASCII bytes of `tag`. This lesson

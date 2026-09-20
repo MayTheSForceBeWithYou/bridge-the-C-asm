@@ -1,4 +1,5 @@
 # 56 — Same loop, three optimization stories
+<!-- concepts: c.p5.opt.levels -->
 
 Optimization levels change instruction shape; cycle counts make that change visceral.
 You already read `-O0` vs `-O2` assembly in Track A. Now you time the same `work()`

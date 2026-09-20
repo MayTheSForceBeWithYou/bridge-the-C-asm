@@ -1,4 +1,5 @@
 # 55 — Timing with rdtscp
+<!-- concepts: c.p5.perf.rdtscp -->
 
 Wall clocks and `clock()` are coarse for tiny loops. The CPU's timestamp counter lets
 you count cycles between two points. On this machine you must use **`rdtscp`** (not
