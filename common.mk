@@ -35,6 +35,13 @@ $(NAME): $(OBJS)
 
 PRIMARY_C := $(firstword $(filter %.c,$(SRCS)))
 
+# `make asm` writes $(NAME).s, and `clean` removes it again. But Track B
+# exercises hand-write a .s whose name is often exactly $(NAME).s --
+# 72-asm-main-libc builds hello_asm from hello_asm.s. Deleting that on
+# `make clean` would destroy the student's work, so never remove a file
+# that is listed as a source.
+GEN_ASM := $(filter-out $(SRCS),$(NAME).s)
+
 preprocess: $(PRIMARY_C)
 	$(CC) $(CFLAGS) -E -o $(NAME).i $(PRIMARY_C)
 
@@ -53,6 +60,6 @@ run: $(NAME)
 	./$(NAME)
 
 clean:
-	rm -f $(NAME) $(OBJS) $(NAME).i $(NAME).s $(NAME).lst $(NAME).lst.intel \
+	rm -f $(NAME) $(OBJS) $(NAME).i $(GEN_ASM) $(NAME).lst $(NAME).lst.intel \
 	      *.o *.i *.lst *.lst.intel a.out
 	$(CLEAN_EXTRA)
