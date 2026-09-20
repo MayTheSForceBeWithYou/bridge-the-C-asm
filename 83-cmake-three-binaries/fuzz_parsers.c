@@ -5,6 +5,6 @@
 int main(void)
 {
     unsigned s = 1;
-    printf("fuzz %u\n", rng_next(&s));
+    printf("fuzz: rng_next = %u\n", rng_next(&s));
     return 0;
 }

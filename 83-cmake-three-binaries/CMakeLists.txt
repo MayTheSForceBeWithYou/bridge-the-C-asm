@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 project(three_binaries C)
 
-# One library, three executables — lib.c appears once.
-add_library(gamelib STATIC lib.c)
+# One node for the shared code. There is no list to keep in sync, so the
+# skew the Makefile above ships cannot be expressed by accident: combat.c
+# is named once, and combat_legacy.c is named nowhere.
+add_library(gamelib STATIC combat.c config.c rng.c)
+target_include_directories(gamelib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(game main.c)
 target_link_libraries(game PRIVATE gamelib)

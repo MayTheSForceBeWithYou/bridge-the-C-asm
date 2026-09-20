@@ -4,6 +4,7 @@
 
 int main(void)
 {
-    printf("damage=%d config=%d\n", combat_damage(10, 3), config_answer());
+    printf("game:      combat_damage(3, 5) = %d\n", combat_damage(3, 5));
+    printf("game:      config_answer()     = %d\n", config_answer());
     return 0;
 }
