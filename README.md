@@ -39,7 +39,8 @@ bridge-the-C-asm/
   README.md AUTHORING.md REFS.md NVIM_DAP.md Makefile common.mk .gitignore
   .vscode/launch.json
   PLAN_PROMPT.md EXTENDED_PROMPT.md
-  01-hello-pipeline/ ... 75-asm-pie-riprel/
+  lesson/
+    01-hello-pipeline/ ... 75-asm-pie-riprel/
 ```
 
 - **Track A (01–20, 29–31):** write C → inspect `.i` / `.s` / `.o` / disassembly.
@@ -140,12 +141,12 @@ From the repo root:
 ```bash
 make                 # build every exercise that has a default target
 make list            # show discovered exercise dirs
-make 01              # shorthand for make -C 01-hello-pipeline
+make 01              # shorthand for make -C lesson/01-hello-pipeline
 make 32              # Track C, etc. — shortcuts auto-discovered
 make 69              # dap breakpoint drill
-make -C 01-hello-pipeline
-make -C 01-hello-pipeline asm disasm run
-make O=2 -C 02-prologue-epilogue asm   # override optimization
+make -C lesson/01-hello-pipeline
+make -C lesson/01-hello-pipeline asm disasm run
+make O=2 -C lesson/02-prologue-epilogue asm   # override optimization
 make clean
 ```
 

@@ -1,31 +1,31 @@
 # Umbrella Makefile — auto-discover numbered exercise directories.
 
-EXERCISES := $(sort $(patsubst %/,%,$(wildcard [0-9][0-9]-*/)))
+EXERCISES := $(sort $(patsubst lesson/%/,%,$(wildcard lesson/[0-9][0-9]-*/)))
 
 .PHONY: all clean list $(EXERCISES)
 
 all:
 	@for d in $(EXERCISES); do \
 		echo "==== $$d ===="; \
-		$(MAKE) -C $$d || exit 1; \
+		$(MAKE) -C lesson/$$d || exit 1; \
 	done
 
 clean:
 	@for d in $(EXERCISES); do \
-		$(MAKE) -C $$d clean; \
+		$(MAKE) -C lesson/$$d clean; \
 	done
 
 list:
 	@printf '%s\n' $(EXERCISES)
 
 $(EXERCISES):
-	$(MAKE) -C $@
+	$(MAKE) -C lesson/$@
 
 # Numeric shortcuts: make 32 / make 07 from discovered dirs
 define MAKE_SHORTCUT
 .PHONY: $(1)
 $(1):
-	@$(MAKE) -C $(2)
+	@$(MAKE) -C lesson/$(2)
 endef
 
 $(foreach d,$(EXERCISES),$(eval $(call MAKE_SHORTCUT,$(firstword $(subst -, ,$(d))),$(d))))
@@ -35,7 +35,7 @@ define MAKE_SHORTCUT_UNPAD
 ifneq ($(1),$(2))
 .PHONY: $(1)
 $(1):
-	@$(MAKE) -C $(3)
+	@$(MAKE) -C lesson/$(3)
 endif
 endef
 
