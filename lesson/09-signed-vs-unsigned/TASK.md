@@ -1,6 +1,7 @@
 # 09 — Signed vs unsigned compares (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Mnemonic cheat sheet** and the real `-O0`
+contrast. This file is only the lab.
 
 ## Build and inspect
 

@@ -1,6 +1,7 @@
 # 11 — Globals and sections (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **How to read one `nm` line** and **`static`
+changes visibility, not "stackness"**. This file is only the lab.
 
 ## Build and inspect
 

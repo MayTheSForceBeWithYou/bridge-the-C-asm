@@ -1,6 +1,7 @@
 # 05 — Return values (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Scalar returns** and **Small struct
+returns**. This file is only the lab.
 
 ## Build and inspect
 
@@ -8,6 +9,11 @@ Read `LESSON.md` first. This file is only the lab.
    in the lesson.
 2. Call them from `main` and print results. `make asm` at `-O0`.
 3. For each, record the return channel from callee *and* caller.
+
+## Reading the listings
+
+- Search each `ret_*:` label; note the register (or pointer stores) at `ret`.
+- Search `call ret_pair` in `main`; read the surrounding setup and unpack.
 
 ## Done when
 

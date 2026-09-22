@@ -1,6 +1,7 @@
 # 25 — `strlen`-like in asm (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially addressing-mode decoding and the empty-string
+path. This file is only the lab.
 
 ## Build and run
 
@@ -12,6 +13,7 @@ Read `LESSON.md` first. This file is only the lab.
 ## Done when
 
 - Harness prints `ok`.
+- Disassembly of `<my_strlen>:` shows your byte loop, not `call strlen@plt`.
 
 ## Lookup
 

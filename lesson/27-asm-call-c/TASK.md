@@ -1,6 +1,7 @@
 # 27 — Asm calls C (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially the outbound checklist and alignment table.
+This file is only the lab.
 
 ## Build and run
 
@@ -13,6 +14,7 @@ Read `LESSON.md` first. This file is only the lab.
 ## Done when
 
 - Harness prints `ok`.
+- You can state `%rsp` mod 16 on entry and at your `call`.
 
 ## Lookup
 

@@ -1,6 +1,7 @@
 # 12 — String literals in `.rodata` (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **How to read an `objdump -s` rodata dump**
+and **How code refers to bytes**. This file is only the lab.
 
 ## Build and inspect
 
@@ -13,7 +14,7 @@ Read `LESSON.md` first. This file is only the lab.
 ## Done when
 
 - You found the literal bytes in `.rodata`.
-- You described how `printf("...")` references them in asm.
+- You described how `printf("...")` references them in asm (RIP-relative or not).
 - You explained what changes for a mutable `char buf[]` initializer.
 
 ## Lookup

@@ -1,6 +1,7 @@
 # 72 — `main` in asm, linked against libc (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially alignment at `main`, `%al` for variadic
+calls, and how to find `<main>:`. This file is only the lab.
 
 ## Build and run
 
@@ -8,7 +9,7 @@ Read `LESSON.md` first. This file is only the lab.
    `printf(fmt, greeting, 14)`, then return 0.
 2. `make && make run`.
 3. Break alignment on purpose (remove `push`/`sub`), rerun under `-O0`, note
-   where it dies.
+   where it dies (`bt`).
 4. `make disasm` and compare your prologue to exercise 01's `gcc -S` `main`.
 
 ## Expected stdout
@@ -20,15 +21,10 @@ hello from asm has 14 chars
 
 Exit status 0.
 
-## Observe
-
-- `%rsp % 16` at first instruction of `main` — why not 0?
-- Role of `%al` for variadic calls; what if it is garbage?
-- Who calls `main`? (`gdb -q ./hello_asm`, `break main`, `bt`.)
-
 ## Done when
 
-- Stdout matches; exit 0; you recorded the alignment-break observation.
+- Stdout matches; exit 0; you recorded the alignment-break observation
+  (which frame faulted).
 
 ## Lookup
 

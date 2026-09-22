@@ -1,6 +1,7 @@
 # 73 — Hand-written CFI so unwinding works (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially CFA offset accounting (entry +8) and how to
+dump frames with `readelf`. This file is only the lab.
 
 ## Build and run
 
@@ -17,14 +18,6 @@ Read `LESSON.md` first. This file is only the lab.
 
 - `frames captured: 6` and exit 0; gdb `bt` names `level2`, `level1`, `main`.
 - Count may print after symbol lines (stdio buffering) — that is fine.
-
-## Observe
-
-- CFA meaning; why offset after `subq $56` is not `56`.
-- Why `-O2` C unwinds without a frame pointer (find `.cfi_*` in Track A asm).
-- Which section holds CFI; effect of `strip` (`readelf -S`).
-- Would `push %rbp; mov %rsp, %rbp` alone fix `backtrace(3)`? Try it.
-- Cost of a missing asm CFI frame in C++ / `-fexceptions`.
 
 ## Lookup
 

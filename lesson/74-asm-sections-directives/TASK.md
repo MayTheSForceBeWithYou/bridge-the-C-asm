@@ -1,6 +1,7 @@
 # 74 — Sections and symbols by hand (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially the section table and how to decode `nm`
+fields. This file is only the lab.
 
 ## Build and run
 
@@ -21,13 +22,6 @@ Read `LESSON.md` first. This file is only the lab.
 ```
 sections counter=7 total=12
 ```
-
-## Observe
-
-- `nm` letters for `counter` / `step` / `scratch`.
-- Why `.bss` is cheap on disk but not in address space.
-- Effect of dropping `.align` / `.balign`; of removing `.type` / `.size`.
-- Writing through a `.rodata` object — which signal?
 
 ## Done when
 

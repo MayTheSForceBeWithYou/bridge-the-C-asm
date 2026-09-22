@@ -1,6 +1,7 @@
 # 23 — Stack scratch + 16-byte align (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially the alignment congruence table and how to
+decode `offset(%rbp)`. This file is only the lab.
 
 ## Build and run
 
@@ -12,6 +13,8 @@ Read `LESSON.md` first. This file is only the lab.
 ## Done when
 
 - Harness prints `ok`.
+- You can point at two distinct stack slots in your listing and say what each
+  holds after the spills.
 
 ## Lookup
 

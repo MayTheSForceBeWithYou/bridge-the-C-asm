@@ -1,6 +1,7 @@
 # 20 — Packed vs aligned structs (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Decode loads for each twin**. This file is
+only the lab.
 
 ## Build and inspect
 
@@ -12,7 +13,8 @@ Read `LESSON.md` first. This file is only the lab.
 ## Done when
 
 - You showed how load offsets differ between natural and packed.
-- You noted whether asm looks clumsier (splits, extra ops) or only denser.
+- You noted whether asm looks clumsier (splits, extra ops) or only denser /
+  misaligned-but-single-`mov`.
 - `sizeof` evidence matches your offset story.
 
 ## Lookup

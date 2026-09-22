@@ -1,6 +1,7 @@
 # 75 — RIP-relative vs absolute in a PIE (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially how to decode a `lea …(%rip)` `objdump`
+line and the absolute-vs-RIP relocation table. This file is only the lab.
 
 ## Build and run
 
@@ -13,20 +14,14 @@ Read `LESSON.md` first. This file is only the lab.
    make disasm && grep -A2 '<main>' riprel.lst
    objdump -d riprel.abs | grep -A6 '<main>:'
    ```
-5. Run the PIE twice; confirm it works as `DYN` (`readelf -h`). Optional ASLR
-   contrast: `setarch -R ./riprel` vs plain.
+5. Confirm PIE is `DYN` (`readelf -h`). Optional ASLR contrast:
+   `setarch -R ./riprel` vs plain.
 
 ## Done when
 
 - `./riprel` prints the message, exits 0, is PIE (`DYN`).
 - `make absolute` fails at link; `./riprel.abs` works as `EXEC`.
-
-## Observe
-
-- Relocations for absolute vs RIP-relative (`objdump -r`).
-- Why absolute 32-bit cannot be load-fixed for PIE.
-- Whether `%rip` is start or next instruction (check disassembly comments).
-- Why `puts` via PLT differs from a data address (ex. 48).
+- You can decode one RIP-relative line into address / displacement / `#` target.
 
 ## Lookup
 

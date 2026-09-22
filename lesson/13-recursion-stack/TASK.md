@@ -1,6 +1,7 @@
 # 13 — Recursion and stack growth (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **gdb as a ruler** and **Estimating stride
+from disassembly alone**. This file is only the lab.
 
 ## Build and inspect
 

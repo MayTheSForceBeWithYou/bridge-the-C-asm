@@ -1,6 +1,7 @@
 # 06 — Struct layout / padding (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Offsets in assembly** and the paper
+prediction tables. This file is only the lab.
 
 ## Build and inspect
 

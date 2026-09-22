@@ -1,12 +1,13 @@
 # 30 — LEA vs ADD (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Decode one `lea` line** and **Pure
+arithmetic `lea` at `-O2`**. This file is only the lab.
 
 ## Build and inspect
 
 1. Write functions such as `p + i` for `int *p`, and integer forms like `3*x+1`
    and `8*x+y`.
-2. `make asm` at `-O0` and `-O2`.
+2. `make asm` at `-O0` and `-O2` (copy aside).
 3. Note where `lea` appears instead of `imul`/`add`.
 
 ## Done when

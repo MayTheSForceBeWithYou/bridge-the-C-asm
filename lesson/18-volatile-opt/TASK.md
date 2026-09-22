@@ -1,12 +1,13 @@
 # 18 — `volatile` vs optimization (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Real `-O2` contrast** and the navigation
+steps. This file is only the lab.
 
 ## Build and inspect
 
 1. Implement two busy-looking store/load loops: one with an ordinary `int`, one
    with `volatile int`.
-2. `make O=2 asm disasm` and compare.
+2. `make O=2 asm disasm` and compare (this lesson's point is `-O2`).
 3. Answer which loads/stores survive and what happened to the non-volatile loop.
 
 ## Done when

@@ -1,6 +1,7 @@
 # 19 — Inline asm bridge (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Operand anatomy** and **How to read the
+generated `.s` around your fragment**. This file is only the lab.
 
 ## Build and inspect
 

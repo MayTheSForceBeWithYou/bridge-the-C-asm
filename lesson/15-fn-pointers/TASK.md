@@ -1,12 +1,13 @@
 # 15 — Function pointers (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Loading and calling — decode the lines**.
+This file is only the lab.
 
 ## Build and inspect
 
 1. Define `inc`, `dec`, and `int apply(int (*fp)(int), int x);` that calls `fp(x)`.
 2. From `main`, call `apply(inc, …)` and `apply(dec, …)`.
-3. `make asm disasm` at `-O0` and `-O2`.
+3. `make asm disasm` at `-O0` and `-O2` (copy aside between builds).
 
 ## Done when
 

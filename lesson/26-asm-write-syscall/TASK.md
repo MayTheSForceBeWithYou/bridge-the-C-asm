@@ -1,6 +1,7 @@
 # 26 — `write` via raw syscall (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially the register mapping table and the
+`objdump` shapes for `my_write` vs `_start`. This file is only the lab.
 
 ## Build and run
 
@@ -19,6 +20,7 @@ Two acceptable shapes — pick one, or do both.
 ## Done when
 
 - Bytes appear on stdout and the chosen build's success check passes.
+- Listing shows `syscall` with `%rax = 1`, not `call write@plt`.
 
 ## Lookup
 

@@ -1,6 +1,7 @@
 # 24 — Sum loop in asm (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially AT&T `cmp` decoding and fall-through.
+This file is only the lab.
 
 ## Build and run
 
@@ -11,6 +12,8 @@ Read `LESSON.md` first. This file is only the lab.
 ## Done when
 
 - Harness prints `ok`.
+- You can point at your `cmp`/`jcc` pair and state the inequality it implements
+  in AT&T terms.
 
 ## Lookup
 

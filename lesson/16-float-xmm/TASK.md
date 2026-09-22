@@ -1,6 +1,7 @@
 # 16 — Float / double in xmm* (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **Separate register files — decode a call
+site**. This file is only the lab.
 
 ## Build and inspect
 

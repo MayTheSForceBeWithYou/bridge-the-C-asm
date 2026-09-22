@@ -1,6 +1,7 @@
 # 29 — Call clobbers (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially **How to read caller saves in asm** and **gdb
+confirmation**. This file is only the lab.
 
 ## Build and inspect
 

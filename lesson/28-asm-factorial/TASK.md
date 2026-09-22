@@ -1,6 +1,7 @@
 # 28 — Recursive factorial in pure asm (practice)
 
-Read `LESSON.md` first. This file is only the lab.
+Read `LESSON.md` first — especially the recursion checklist and the "calling
+myself does not relax ABI" rule. This file is only the lab.
 
 ## Build and run
 
@@ -12,6 +13,7 @@ Read `LESSON.md` first. This file is only the lab.
 ## Done when
 
 - Harness prints `ok` for several `n`.
+- Disassembly shows `call` to `<fac>` with a save of `n` around it.
 
 ## Lookup
 
