@@ -3,14 +3,15 @@
 A C source file is not what the CPU runs. Between `hello.c` and a running process sits a
 pipeline of real artifacts — preprocessed text, assembly, an object file, and a linked
 ELF binary — each one a different *kind* of truth about your program. By the end of this
-lesson you should be able to name what each artifact is for, predict which one will change
-when you edit a string literal, and find `main` in a disassembly without guessing.
+lesson you should be able to name what each artifact encodes, say *what* inside it moves
+when a string literal changes (payload versus control-flow / frame shape), and find `main`
+in a disassembly without guessing.
 
 ## What this lesson asks of you
 
-Given a tiny C program, drive the translation pipeline yourself and *read* each output.
-The competence is not "I can type `make`." It is: when something about the final binary
-surprises you later in this track, you already know which stage invented that surprise.
+Drive the translation pipeline on this tiny program and read each output as a distinct
+encoding of the same source. Later, when a binary surprises you, you want to know which
+stage introduced the surprise — preprocessor paste, compiler codegen, assemble, or link.
 
 `TASK.md` in this directory is the practice. This file is the teaching. Man and info pages
 are for looking up a flag spelling once you know *what* you are looking for — they are not
@@ -53,8 +54,40 @@ vocabulary, not magic:
 you already linked and saves the listing. That is why `hello.lst` and the live output of
 `objdump -d hello` match line-for-line.
 
-Default `CFLAGS` here include `-ggdb -Wall -Wextra -O0`. `-O0` keeps frames and calls easy
-to see; later exercises change optimization on purpose.
+### Where `-O0` lives (Make/`CFLAGS`, not source text)
+
+`-O0` is **not** a token in `hello.c`, and it will not appear as a searchable string in
+`.i` / `.s` / `.o` / `hello` / `.lst` the way a string literal does. It is a **compiler
+flag** Make passes to `gcc` on every compile/preprocess/assemble-from-C step.
+
+This lesson's `Makefile` is only:
+
+```makefile
+NAME := hello
+include ../../common.mk
+```
+
+The default lives two directories up, in `../../common.mk`:
+
+```makefile
+CFLAGS ?= -ggdb -Wall -Wextra -O0
+```
+
+(`?=` means a lesson can override `CFLAGS`; most do not.) So when the prose says "at
+`-O0`" or "fixed `-O0`", it means: leave that default alone — do not rebuild with a
+different optimization level (this tree also accepts `make O=2`, which rewrites `CFLAGS`
+to `-O2`).
+
+To see the flag on the actual command line without inventing it:
+
+```bash
+make -n asm
+# or: make -n obj
+```
+
+You should see `gcc … -O0 …` among the other `CFLAGS`. `-O0` disables optimization so
+frames (`push %rbp` / `mov %rsp,%rbp`) and calls stay obvious; later lessons change `O`
+on purpose and ask you to compare.
 
 ## What "preprocessed" actually means
 
@@ -74,9 +107,11 @@ tens of thousands of lines for a handful of lines you wrote.
    file/line provenance (so compilers and debuggers can still blame the right header). Those
    are markers, not executable code.
 
-When you change only the string inside `printf` and re-run `make preprocess`, the `.i` file
-still changes in that one place (and nearby `#` markers may shift). Most of the bulk stays
-identical. That is normal: the preprocessor is not optimizing; it is textual expansion.
+When you change only the string inside `printf` and re-run `make preprocess`, `hello.i`
+changes: the literal text (and often nearby `#` line markers) moves. The thousands of lines
+of header paste usually stay byte-identical. The preprocessor is not optimizing; it is
+textual expansion — so expect a localized edit in a huge file, not a rewrite of libc
+declarations.
 
 **Rejected wrong reading:** "The preprocessor wrote thousands of lines of logic for my
 hello world." Almost all of that bulk is the *declaration surface* of the C library and
@@ -92,8 +127,8 @@ not part of what the CPU executes; the assembler ignores them as comments.
 
 ### What to look for in `hello.s`
 
-Search for `main:` (a label — note the colon). Around it at `-O0` you should be able to
-spot, in some order:
+Search for `main:` (a label — note the colon). Under the default `-O0` `CFLAGS` from
+`common.mk` you should be able to spot, in some order:
 
 - Frame setup: often `pushq %rbp` then `movq %rsp, %rbp` (AT&T syntax: source first,
   destination second, registers with `%`, immediates with `$`).
@@ -196,8 +231,8 @@ address `1068`, target annotation `# 1149 <main>`.
 2. Treat everything above it (`_init`, `.plt`, `_start`, `register_tm_clones`, …) as
    runtime and library glue. You will study that glue in later tracks. For this lesson,
    your C begins at `<main>:`.
-3. At `-O0`, `main` usually opens with stack setup: `push %rbp`, then `mov %rsp,%rbp`,
-   often a `sub` that grows the frame. Those are not calls into libc.
+3. Under default `-O0` `CFLAGS`, `main` usually opens with stack setup: `push %rbp`,
+   then `mov %rsp,%rbp`, often a `sub` that grows the frame. Those are not calls into libc.
 4. Scroll within `main` until the mnemonic is `call` or `callq` (commonly
    `call … <printf@plt>`). On that line, left column = where the call instruction lives;
    the operand / `<…@plt>` hint = where it is trying to go.
@@ -217,9 +252,9 @@ of the C library pasted in so the compiler knows what `printf` is. Your logic is
 handful of lines near the bottom.
 
 **Step 2 — open `.s` and find `main:`.** You should see a function label, some stack frame
-setup at `-O0`, a reference toward your string, and a `call` toward `printf`. The rejected
-wrong reading is: "this `.s` is what `./hello` runs." The CPU never sees `.s`; assembly and
-linking still have to happen.
+setup (the usual shape under default `-O0` `CFLAGS`), a reference toward your string, and a
+`call` toward `printf`. The rejected wrong reading is: "this `.s` is what `./hello` runs."
+The CPU never sees `.s`; assembly and linking still have to happen.
 
 **Step 3 — compare `.o` to `hello` with `readelf -h` (and optionally `size`).** Save both
 headers and diff them as shown earlier. Expect different type / entry-point / section
@@ -238,11 +273,29 @@ Inside `main`, note the stack-setup instructions first. Then find the `call` tow
 Those two numbers answer different questions: *where is the call instruction?* versus
 *where is it trying to go?*
 
-**Step 5 — change only the message string, rebuild the pipeline, re-open `.i` / `.s` /
-`.lst`.** Expect the string bytes / literal contents to change. Do not expect `main`'s
-prologue shape to reinvent itself just because the greeting text changed. If the prologue
-*did* change a lot, you probably also changed optimization level or compiler flags by
-accident — check that you still built at `-O0`.
+**Step 5 — change only the message string, rebuild, and diff artifacts on purpose.**
+Save copies before the edit (`hello.i.before`, `hello.s.before`, `hello.lst.before`, and
+the binary if you want `cmp`). Change *only* the literal in `hello.c`, then
+`make preprocess asm obj disasm`.
+
+Every rebuilt file will differ as a whole — `.c`, `.i`, `.s`, `.o`, `hello`, and `.lst`
+all pick up the new payload (and object/binary hashes move). The useful question is not
+"which files change?" but **what inside each encoding changed**:
+
+| Artifact | What almost always moves | What to check stayed put (default `-O0` `CFLAGS`, no `O=`) |
+| -------- | ------------------------ | ----------------------------------------- |
+| `.i` | The literal substring (maybe `#` markers) | The mass of `#include` paste |
+| `.s` | The string characters and/or how they are materialized (`.rodata` vs `movabs` immediates, stack buffer size) | Labels and the usual frame setup under default `-O0` `CFLAGS`, *if* length/encoding strategy did not force different codegen |
+| `.o` / `hello` | Data bytes for the literal; section contents | Not "unchanged files" — use `cmp`/`sha256sum`; they will differ |
+| `.lst` | Hex dump of those data bytes; any instructions that materialize the new constant | `main`'s prologue/`call printf@plt` *shape* when codegen strategy is unchanged |
+
+Diff `.s` and the `<main>:` region of `.lst` explicitly. A same-length cosmetic edit often
+touches only the literal bytes while leaving `push %rbp` / `mov %rsp,%rbp` / `call …@plt`
+in place. A much longer or shorter string can change GCC's materialization strategy (stack
+slot vs immediates vs `.rodata`) — then instruction *sequence* changes too. That is still
+a string-only source edit; the compiler is allowed to re-encode the constant. Leave
+`CFLAGS` at the `common.mk` default (`-O0`); do not pass `O=…`, or you mix optimization
+into the comparison.
 
 ## Distinctions worth keeping straight
 
@@ -255,8 +308,9 @@ accident — check that you still built at `-O0`.
   `# abs <symbol>` comment. Only the left column is "where this instruction lives."
 - **Your `main` vs CRT / PLT** — always search `<main>:` before interpreting the first
   interesting-looking `call` in the file.
-- **Changing a string** — expect `.i` / `.s` / binary *data* to reflect it; do not expect
-  the *shape* of `main`'s prologue to rewrite itself for a string edit alone.
+- **String edit ≠ "some files unchanged."** All rebuilt artifacts differ; the discrimination
+  is payload / materialization versus frame and call shape under fixed default `-O0`
+  `CFLAGS`. Length changes can legitimately retarget codegen for the constant.
 
 ## Check yourself
 
@@ -265,8 +319,11 @@ Close this file and answer from memory, then verify against your artifacts:
 1. Which artifact still contains `#include` expansion as C text?
 2. Which artifact first contains machine code for `main`?
 3. Why can a `.o` fail to run even if assembly succeeded?
-4. You change only the message string and rebuild. Which artifacts must change? Which
-   might look almost identical in *structure* but differ in data bytes?
+4. You change only the message string and rebuild with the same default `-O0` `CFLAGS`
+   (no `O=`). Name, for `.i`, `.s`, `.o`/`hello`, and `.lst`, *what* you expect to move
+   (literal payload, `#` markers, materialization instructions, section data) versus what
+   you expect to keep the same instruction shape in `<main>:` — and say when a length
+   change voids that expectation.
 5. On a `lea 0xda(%rip),… # 1149 <main>` line, which token is the instruction address,
    which is an encoded offset, and which is the resolved target?
 6. In `hello.lst`, what exact search string takes you to your C rather than `_start`?

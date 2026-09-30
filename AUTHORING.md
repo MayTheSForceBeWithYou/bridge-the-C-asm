@@ -101,6 +101,38 @@ to answer is to have memorized an external man page, the lesson failed.
 
 Defensible claims (3–6 bullets), not a restatement of the headings.
 
+## Precision: what changes, not which files exist
+
+When an edit propagates through the pipeline (string literal, flag flip, `-O0` vs `-O2`),
+**do not** ask "which artifacts change?" after a full rebuild — typically all of them do
+(`.c` through `.o`, binary, and `.lst`). That question trains a false dichotomy.
+
+Ask instead what *inside* each encoding moves:
+
+- payload / literal / section data bytes
+- materialization strategy (immediates vs `.rodata` vs stack buffer)
+- control-flow and frame shape (prologue, `call` targets, jumps)
+- metadata noise (`#` line markers, timestamps if any, content hashes)
+
+State the controls you are holding fixed (default `-O0` `CFLAGS` from `common.mk`, same
+compiler). Call out when a "data-only" source edit can still change instruction sequences
+(e.g. string length flipping GCC from `movabs` immediates to `.rodata`).
+
+### Naming `-O0` / `-O2` (and friends)
+
+These are **compiler flags**, usually from `CFLAGS` in `common.mk` (`CFLAGS ?= … -O0`) or
+from `make O=2` / an explicit `gcc -O…` line — not tokens in the exercise `.c` and not
+strings you will find by grepping `.i` / `.s` / `.lst`. When prose says "at `-O0`" or
+"fixed `-O0`", write it so a reader looking only at the lesson directory still knows where
+the flag comes from: name `common.mk` / `CFLAGS` / `make O=` (or the lesson Makefile) on
+first use in that file, and prefer "under default `-O0` `CFLAGS`" over a bare "at `-O0`"
+when the location matters. Suggest `make -n asm` (or `make -n`) when the reader needs to
+see the flag on the real command line.
+
+Voice: address a reader who can handle that specificity. Avoid pep-talk framing ("the
+competence is not typing make") and intro-course hedging that implies some outputs are
+magically untouched.
+
 ## When revising an existing lesson
 
 Use this checklist (inspired by the 01 `objdump` confusion):
@@ -112,6 +144,9 @@ Use this checklist (inspired by the 01 `objdump` confusion):
 - [ ] Makefile / command → output file mapping is explicit when targets are non-obvious
 - [ ] Lookup lists only verified local docs; no fake man pages
 - [ ] `TASK.md` stayed practice-only after the lesson got deeper
+- [ ] Rebuild/diff prompts ask what *inside* artifacts moves, not which files change
+- [ ] `-O0` / `-On` are framed as Make/`CFLAGS` (or an explicit `gcc -O…`), not as if they lived in the source artifacts
+- [ ] Tone stays specific — no intro-course pep talk
 
 ## README / philosophy
 
